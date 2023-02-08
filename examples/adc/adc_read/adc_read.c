@@ -9,12 +9,15 @@
  * 
  * Reads some analog inputs on the Nucleo-L476RG
  * 
- * The purpose of this example is only to demonstrate the very basics of how to read from the ADC.
+ * The purpose of this example is only to demonstrate the very basics of how to read a sequence of
+ * inputs from the ADC.
  * However in order to properly demonstrate this, the UART is used to send the converted data back
  * to the developers computer.
  * 
  * We read some external input pins, as well as some internal channels for temperature sensor, battery voltage
  * and reference voltage.
+ * 
+ * 
  * 
  */
 #include <stm32l4xx_ll_gpio.h>
@@ -141,10 +144,20 @@ void init_adc() {
     //LL_ADC_InitTypeDef ADC_InitStruct = {0};
     //LL_ADC_REG_InitTypeDef ADC_REG_InitStruct = {0};
 
-    // Channel settings
+    /**
+     * @brief 
+     *
+     * Scan mode can only be used with DMA. 
+     */
     // Sequencer disabled is equivalent to sequencer of 1 rank, ADC conversion on only 1 channel.
     //LL_ADC_REG_SetSequencerLength(ADC1, LL_ADC_REG_SEQ_SCAN_DISABLE); 
     LL_ADC_REG_SetSequencerLength(ADC1, LL_ADC_REG_SEQ_SCAN_ENABLE_4RANKS);
+
+    /**
+     * @brief 
+     *
+     * The sequencer discont mode can not be used with continous mode 
+     */
     LL_ADC_REG_SetSequencerDiscont(ADC1, LL_ADC_REG_SEQ_DISCONT_1RANK);
 
     LL_ADC_REG_SetTriggerSource(ADC1, LL_ADC_REG_TRIG_SOFTWARE);
@@ -161,9 +174,10 @@ void init_adc() {
     LL_ADC_SetOverSamplingScope(ADC1, LL_ADC_OVS_DISABLE);
     LL_ADC_SetOverSamplingDiscont(ADC1, LL_ADC_OVS_REG_DISCONT);
 
-    LL_ADC_SetCommonPathInternalCh(__LL_ADC_COMMON_INSTANCE(ADC1), LL_ADC_PATH_INTERNAL_TEMPSENSOR);
-    LL_ADC_SetCommonPathInternalCh(__LL_ADC_COMMON_INSTANCE(ADC1), LL_ADC_PATH_INTERNAL_VBAT);
-    LL_ADC_SetCommonPathInternalCh(__LL_ADC_COMMON_INSTANCE(ADC1), LL_ADC_PATH_INTERNAL_VREFINT);
+    //LL_ADC_SetCommonPathInternalCh(__LL_ADC_COMMON_INSTANCE(ADC1), LL_ADC_PATH_INTERNAL_TEMPSENSOR);
+    //LL_ADC_SetCommonPathInternalCh(__LL_ADC_COMMON_INSTANCE(ADC1), LL_ADC_PATH_INTERNAL_VBAT);
+    //LL_ADC_SetCommonPathInternalCh(__LL_ADC_COMMON_INSTANCE(ADC1), LL_ADC_PATH_INTERNAL_VREFINT);
+    LL_ADC_SetCommonPathInternalCh(__LL_ADC_COMMON_INSTANCE(ADC1), LL_ADC_PATH_INTERNAL_TEMPSENSOR | LL_ADC_PATH_INTERNAL_VREFINT | LL_ADC_PATH_INTERNAL_VBAT);
 
     LL_ADC_REG_SetSequencerRanks(ADC1, LL_ADC_REG_RANK_1, LL_ADC_CHANNEL_5);
     //LL_ADC_REG_SetSequencerRanks(ADC1, LL_ADC_REG_RANK_2, LL_ADC_CHANNEL_6);
