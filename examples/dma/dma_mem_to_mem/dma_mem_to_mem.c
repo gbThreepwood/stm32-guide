@@ -1,5 +1,5 @@
 /**
- * @file ledblink.c
+ * @file dma_mem_to_mem.c
  * @author Eirik Haustveit (eirik@haustveit.net)
  * @brief DMA demo
  * @version 0.1
