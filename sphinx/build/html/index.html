@@ -356,6 +356,7 @@ title="Print to PDF"
   <section id="stm32-programming-by-examples">
 <h1>STM32 programming by examples<a class="headerlink" href="#stm32-programming-by-examples" title="Permalink to this headline">#</a></h1>
 <p>This book and example repository is still very much a work in progress. Some chapters are empty, and simply added to function as a to do list.</p>
+<p>The complete source code for the examples is available at: <a class="reference external" href="https://github.com/gbThreepwood/stm32-guide/tree/master/examples">https://github.com/gbThreepwood/stm32-guide/tree/master/examples</a></p>
 <div class="toctree-wrapper compound">
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Peripherals:</span></p>
 <ul>
@@ -373,8 +374,18 @@ title="Print to PDF"
 <li class="toctree-l2"><a class="reference internal" href="peripherals/stm32-dma.html#using-dma-with-peripherals">Using DMA with peripherals</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="peripherals/stm32-adc.html">STM32 ADC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="peripherals/stm32-uart.html">STM32 UART</a></li>
+<li class="toctree-l1"><a class="reference internal" href="peripherals/stm32-adc.html">STM32 ADC</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="peripherals/stm32-adc.html#configure-the-adc-for-polling">Configure the ADC for polling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="peripherals/stm32-adc.html#continuos-conversion-and-interrupt">Continuos conversion and interrupt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="peripherals/stm32-adc.html#continuos-conversion-and-dma">Continuos conversion and DMA</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="peripherals/stm32-uart.html">STM32 UART</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="peripherals/stm32-uart.html#using-the-hal-for-rx-and-tx">Using the HAL for RX and TX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="peripherals/stm32-uart.html#using-the-low-level-ll-drivers">Using the low level (LL) drivers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="peripherals/stm32-uart.html#reliable-uart-reception-and-transmission">Reliable UART reception and transmission</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="peripherals/stm32-rtc.html">STM32 RTC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="peripherals/stm32-low-power.html">STM32 Low power</a></li>
 <li class="toctree-l1"><a class="reference internal" href="peripherals/stm32-i2c.html">STM32 I2C</a></li>

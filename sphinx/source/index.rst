@@ -6,6 +6,10 @@
 STM32 programming by examples
 =========================================================
 
+This book and example repository is still very much a work in progress. Some chapters are empty, and simply added to function as a to do list.
+
+The complete source code for the examples is available at: https://github.com/gbThreepwood/stm32-guide/tree/master/examples
+
 .. toctree::
    :maxdepth: 2
    :caption: Peripherals:

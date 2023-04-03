@@ -279,12 +279,124 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-the-hal-for-rx-and-tx">
+   Using the HAL for RX and TX
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#receive-using-polling">
+     Receive using polling
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#receive-using-interrupts">
+     Receive using interrupts
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-the-low-level-ll-drivers">
+   Using the low level (LL) drivers
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-simple-dma-receive-and-send-example">
+     A simple DMA receive and send example
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reliable-uart-reception-and-transmission">
+   Reliable UART reception and transmission
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ring-buffer">
+     Ring buffer
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#generating-the-bsp-using-the-low-level-ll-drivers">
+     Generating the BSP using the low level (LL) drivers
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#configuring-and-testing-in-a-cmake-project">
+     Configuring and testing in a CMake project
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implementing-dma-support">
+     Implementing DMA support
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adding-ring-buffer-library">
+     Adding ring buffer library
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dma-transfer-from-uart-to-lwrb">
+     DMA transfer from UART to
+     <em>
+      lwrb
+     </em>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#checking-for-received-data-in-application">
+     Checking for received data in application
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dma-transfer-from-lwrb-to-uart">
+     DMA transfer from
+     <em>
+      lwrb
+     </em>
+     to UART
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adding-proper-printf-scanf-and-fprintf-support">
+     Adding proper printf, scanf, and fprintf support
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-a-custom-printf-library">
+     Using a custom printf library
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -296,6 +408,107 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-the-hal-for-rx-and-tx">
+   Using the HAL for RX and TX
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#receive-using-polling">
+     Receive using polling
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#receive-using-interrupts">
+     Receive using interrupts
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-the-low-level-ll-drivers">
+   Using the low level (LL) drivers
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-simple-dma-receive-and-send-example">
+     A simple DMA receive and send example
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reliable-uart-reception-and-transmission">
+   Reliable UART reception and transmission
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ring-buffer">
+     Ring buffer
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#generating-the-bsp-using-the-low-level-ll-drivers">
+     Generating the BSP using the low level (LL) drivers
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#configuring-and-testing-in-a-cmake-project">
+     Configuring and testing in a CMake project
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implementing-dma-support">
+     Implementing DMA support
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adding-ring-buffer-library">
+     Adding ring buffer library
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dma-transfer-from-uart-to-lwrb">
+     DMA transfer from UART to
+     <em>
+      lwrb
+     </em>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#checking-for-received-data-in-application">
+     Checking for received data in application
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dma-transfer-from-lwrb-to-uart">
+     DMA transfer from
+     <em>
+      lwrb
+     </em>
+     to UART
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adding-proper-printf-scanf-and-fprintf-support">
+     Adding proper printf, scanf, and fprintf support
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-a-custom-printf-library">
+     Using a custom printf library
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -305,6 +518,645 @@ title="Print to PDF"
                 
   <section id="stm32-universal-asynchronous-receiver-transmitter-uart">
 <h1>STM32 Universal asynchronous receiver transmitter (UART)<a class="headerlink" href="#stm32-universal-asynchronous-receiver-transmitter-uart" title="Permalink to this headline">#</a></h1>
+<p>There is very little to learn from blindly following a guide to achieve some goal, and this page does not attempt to provide every little detail which is required in order for UART to work in your project. The reader should understand each step, in order to be able to read between the lines the extra steps which are required. By “extra steps” is meant such things as the proper declaration of variables and functions, the inclusion of initialization code generated from CubeMX, etc. An understanding of the C language is thus also required.</p>
+<section id="using-the-hal-for-rx-and-tx">
+<h2>Using the HAL for RX and TX<a class="headerlink" href="#using-the-hal-for-rx-and-tx" title="Permalink to this headline">#</a></h2>
+<p>A quick google search will reveal a lot of STM32 UART examples which are not amazing. They might work for the simple demonstration that they provide, but they are not easy to extend to something useful. Some examples are good, but the reader needs to be careful. Especially the HAL library is not too flexible.</p>
+<p>The conclusion is that it is probably better to stick with the low level (LL) drivers, and possibly add some application specific high level abstractions on top of them. Still the basics of the UART HAL drivers should be understood in case one encounters them in some applications or example code.</p>
+<p>The <code class="code docutils literal notranslate"><span class="pre">printf()</span></code> family of functions is nice if you want to manipulate strings. A quick way to integrate it with the HAL UART drivers is as follows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="w"> </span><span class="n">uart_tx_buf</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span>
+
+<span class="n">sprintf</span><span class="p">(</span><span class="n">uart_tx_buf</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Test</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="n">HAL_UART_Transmit</span><span class="p">(</span><span class="o">&amp;</span><span class="n">huart1</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="o">*</span><span class="p">)</span><span class="n">uart_tx_buf</span><span class="p">,</span><span class="w"> </span><span class="n">strlen</span><span class="p">(</span><span class="n">uart_tx_buf</span><span class="p">),</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="receive-using-polling">
+<h3>Receive using polling<a class="headerlink" href="#receive-using-polling" title="Permalink to this headline">#</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This section needs to be written</p>
+</div>
+</section>
+<section id="receive-using-interrupts">
+<h3>Receive using interrupts<a class="headerlink" href="#receive-using-interrupts" title="Permalink to this headline">#</a></h3>
+<p>The <code class="code docutils literal notranslate"><span class="pre">HAL_UART_Receive_IT(&amp;huart1,</span> <span class="pre">&amp;uart_rx_buf,</span> <span class="pre">number_of_bytes);</span></code> configures a interrupt to receive a specified number of bytes. This function is not particularly useful as we would normally want to receive whatever the UART sees, not a specific number of bytes. It is possible to set the number of bytes to one, and call the function each time a byte is received, but the author has found the reliability of this approach to be less than adequate. It is better to simply enable receive interrupts, and handle the received data in an ISR:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">__HAL_UART_ENABLE_IT</span><span class="p">(</span><span class="o">&amp;</span><span class="n">huart1</span><span class="p">,</span><span class="w"> </span><span class="n">UART_IT_RXNE</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The ISR for USART1 can then simply use the non-interrupt version of the UART receive functions <code class="code docutils literal notranslate"><span class="pre">HAL_UART_Receive();</span></code> to acquire the received byte:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">uart_rx_char</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x00</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">USART1_IRQHandler</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">HAL_UART_Receive</span><span class="p">(</span><span class="o">&amp;</span><span class="n">huart1</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">uart_rx_char</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">//HAL_UART_IRQHandler(&amp;huart1); // We do not need to call the HAL interrupt handler</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Low level access to the UART receive buffer through direct register read or the low level (LL) API will probably be more efficient, but here we are discussing the HAL drivers.</p>
+<p>In the above example a single byte buffer is used, but typically one would implement a ring (FIFO) buffer where the ISR places each received byte. If the buffer is full it could either drop the latest received data, or overwrite the oldest data in the ring.</p>
+</section>
+</section>
+<section id="using-the-low-level-ll-drivers">
+<h2>Using the low level (LL) drivers<a class="headerlink" href="#using-the-low-level-ll-drivers" title="Permalink to this headline">#</a></h2>
+<section id="a-simple-dma-receive-and-send-example">
+<h3>A simple DMA receive and send example<a class="headerlink" href="#a-simple-dma-receive-and-send-example" title="Permalink to this headline">#</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This simple example needs to be written</p>
+</div>
+</section>
+</section>
+<section id="reliable-uart-reception-and-transmission">
+<h2>Reliable UART reception and transmission<a class="headerlink" href="#reliable-uart-reception-and-transmission" title="Permalink to this headline">#</a></h2>
+<p>The polling function <code class="code docutils literal notranslate"><span class="pre">HAL_UART_Receive</span> <span class="pre">(&amp;huart1,</span> <span class="pre">rx_buffer,</span> <span class="pre">buffer_size,</span> <span class="pre">timeout_value);</span></code> is not suitable for anything but simple demo applications. There are two distinct features available which can allow us to implement reliable UART reception:</p>
+<ul class="simple">
+<li><p>RX complete Interrupt</p></li>
+<li><p>Direct memory access (DMA)</p></li>
+</ul>
+<p>The interrupt approach is probably the most commonly used in embedded systems. It is less common for a microcontroller to support DMA, but when it does the DMA approach will allow the best performance. In this lesson we will cover the usage of DMA since it is supported by the STM32 microcontrollers.</p>
+<p>Just like with reception, the most efficient way to transmit data over the UART is to use DMA. When sending we know how many bytes we are going to send in advance, which makes the implementation simpler. Still the data to transmit should be enqueued in a buffer, since the data rate of the UART can be much lower than the processing speed of the CPU.</p>
+<section id="ring-buffer">
+<h3>Ring buffer<a class="headerlink" href="#ring-buffer" title="Permalink to this headline">#</a></h3>
+<p>For reception the DMA can manage the data in a ring buffer. The CPU needs to keep track of the data which is new, and the data which has already been processed. In order to have a clean and consistent interface we will be keeping both the received data, and the data which we are going to send in software controlled ring buffers.</p>
+<p>Although a ring buffer is something which is relatively straight forward to implement, it is better to rely on something which is thoroughly tested for production code. The ring buffer implementation we will be using here is called <em>lwrb</em>, and is available here: <a class="reference external" href="https://github.com/MaJerle/lwrb">https://github.com/MaJerle/lwrb</a>.</p>
+</section>
+<section id="generating-the-bsp-using-the-low-level-ll-drivers">
+<h3>Generating the BSP using the low level (LL) drivers<a class="headerlink" href="#generating-the-bsp-using-the-low-level-ll-drivers" title="Permalink to this headline">#</a></h3>
+<p>We start by configuring as much as possible of the UART and DMA peripherals using CubeMX. We add configuration for both UART1, and UART2, but only DMA on UART1.</p>
+<figure class="align-default">
+<img alt="../_images/stm32wl55-pin-configuration-dual-uart-and-single-gpio.png" src="../_images/stm32wl55-pin-configuration-dual-uart-and-single-gpio.png" />
+</figure>
+<p>Use the following DMA configuration:</p>
+<figure class="align-default">
+<img alt="../_images/stm32wl55-uart1-dma-config.png" src="../_images/stm32wl55-uart1-dma-config.png" />
+</figure>
+<p>Configure both USART1, and USART2 for “asynchronous” mode, and enable interrupt. The rest of the parameters can remain in their default state.</p>
+</section>
+<section id="configuring-and-testing-in-a-cmake-project">
+<h3>Configuring and testing in a CMake project<a class="headerlink" href="#configuring-and-testing-in-a-cmake-project" title="Permalink to this headline">#</a></h3>
+<p>Create two files “uart.c”, and “uart.h” for the UART configuration. Copy the CubeMX generated UART initialization code in to some new functions which you place in “uart.c”, with prototypes in “uart.h”. Create two new files “dma.c”, and “dma.h” where you place the DMA initialization code generated by CubeMX. You also need the system clock initialization, which you may place in “main.c”.</p>
+<p>Since we are using the low level (LL) library we have to make some changes to the CMakeLists.txt. The path to the various low level libraries are on the form of: <code class="code docutils literal notranslate"><span class="pre">HAL::STM32::WL::M4::LL_GPIO</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>I am still not 100% sure about the following CMake configuration. It works though.</p>
+</div>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="p">(</span><span class="s">HAL_COMP_LIST</span><span class="w"> </span><span class="s">STM32WL</span><span class="w"> </span><span class="s">LL_RCC</span><span class="w"> </span><span class="s">LL_GPIO</span><span class="w"> </span><span class="s">LL_USART</span><span class="w"> </span><span class="s">LL_PWR</span><span class="w"> </span><span class="s">LL_UTILS</span><span class="w"> </span><span class="s">PWR</span><span class="w"> </span><span class="s">CORTEX</span><span class="p">)</span><span class="w"> </span><span class="c"># UART PWR CORTEX STM32WL)</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">CMSIS_COMP_LIST</span><span class="w"> </span><span class="s">STM32WL</span><span class="p">)</span>
+
+<span class="nb">find_package</span><span class="p">(</span><span class="s">CMSIS</span><span class="w"> </span><span class="s">COMPONENTS</span><span class="w"> </span><span class="s2">&quot;${CMSIS_COMP_LIST}&quot;</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
+<span class="nb">find_package</span><span class="p">(</span><span class="s">HAL</span><span class="w"> </span><span class="s">COMPONENTS</span><span class="w"> </span><span class="s2">&quot;${HAL_COMP_LIST}&quot;</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
+
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">stm32wl55-uart-demo</span><span class="w"> </span><span class="o">${</span><span class="nv">PROJECT_SOURCES</span><span class="o">}</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">stm32wl55-uart-demo</span>
+<span class="w">    </span><span class="s">HAL::STM32::WL::M4::LL_RCC</span>
+<span class="w">    </span><span class="s">HAL::STM32::WL::M4::LL_PWR</span>
+<span class="w">    </span><span class="s">HAL::STM32::WL::M4::LL_GPIO</span>
+<span class="w">    </span><span class="s">HAL::STM32::WL::M4::LL_USART</span>
+<span class="w">    </span><span class="s">HAL::STM32::WL::M4::LL_UTILS</span>
+<span class="w">    </span><span class="s">CMSIS::STM32::WL55CC::M4</span>
+<span class="w">    </span><span class="s">STM32::NoSys</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Before we complete the configuration we should make sure that basic UART operation is functional. The following function will send messages on both UART devices:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">low_level_send_uart_message</span><span class="p">(){</span>
+
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">str1</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello from UART1</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">strlen</span><span class="p">(</span><span class="n">str1</span><span class="p">);</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+<span class="w">            </span><span class="n">LL_USART_TransmitData8</span><span class="p">(</span><span class="n">USART1</span><span class="p">,</span><span class="w"> </span><span class="n">str1</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">            </span><span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">LL_USART_IsActiveFlag_TXE_TXFNF</span><span class="p">(</span><span class="n">USART1</span><span class="p">)){};</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">LL_USART_IsActiveFlag_TC</span><span class="p">(</span><span class="n">USART1</span><span class="p">))</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">str2</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello from UART2</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">strlen</span><span class="p">(</span><span class="n">str2</span><span class="p">);</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+<span class="w">            </span><span class="n">LL_USART_TransmitData8</span><span class="p">(</span><span class="n">USART2</span><span class="p">,</span><span class="w"> </span><span class="n">str2</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">            </span><span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">LL_USART_IsActiveFlag_TXE_TXFNF</span><span class="p">(</span><span class="n">USART2</span><span class="p">)){};</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">LL_USART_IsActiveFlag_TC</span><span class="p">(</span><span class="n">USART2</span><span class="p">))</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Add a call to this function in “main.c”:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="p">(;;){</span><span class="w"> </span><span class="c1">// ever...</span>
+<span class="w">    </span><span class="n">LL_GPIO_ResetOutputPin</span><span class="p">(</span><span class="n">GPIOA</span><span class="p">,</span><span class="w"> </span><span class="n">LL_GPIO_PIN_15</span><span class="p">);</span>
+<span class="w">        </span><span class="n">LL_mDelay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+<span class="w">        </span><span class="n">LL_GPIO_SetOutputPin</span><span class="p">(</span><span class="n">GPIOA</span><span class="p">,</span><span class="w"> </span><span class="n">LL_GPIO_PIN_15</span><span class="p">);</span>
+<span class="w">        </span><span class="n">LL_mDelay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">low_level_send_uart_message</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cmake<span class="w"> </span>..
+<span class="gp">$ </span>make
+<span class="gp">$ </span>make<span class="w"> </span>flash
+</pre></div>
+</div>
+<p>Use picocom (or your favorite UART terminal emulator) to observe the data received from the UART. Do not continue with the rest of this guide before you have made sure that this is working.</p>
+</section>
+<section id="implementing-dma-support">
+<h3>Implementing DMA support<a class="headerlink" href="#implementing-dma-support" title="Permalink to this headline">#</a></h3>
+<p>Most of the required initialization code for the UART, and DMA should already have been auto-generated from CubeMX, but there are a few important details missing and the peripheral is not yet activated.</p>
+<p>The DMA needs to know which memory address it should use for the data received from the UART. It also needs to know the size of the buffer. The DMA is in circular mode, which means it will start overwriting the oldest data in the buffer, when it is full.</p>
+<p>You need to declare memory for use by the DMA:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">usart1_rx_dma_buffer</span><span class="p">[</span><span class="mi">64</span><span class="p">];</span>
+</pre></div>
+</div>
+<p>And configure the DMA to use this memory:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">LL_DMA_SetPeriphAddress</span><span class="p">(</span><span class="n">DMA1</span><span class="p">,</span><span class="w"> </span><span class="n">LL_DMA_CHANNEL_1</span><span class="p">,</span><span class="w"> </span><span class="n">LL_USART_DMA_GetRegAddr</span><span class="p">(</span><span class="n">USART1</span><span class="p">,</span><span class="w"> </span><span class="n">LL_USART_DMA_REG_DATA_RECEIVE</span><span class="p">));</span>
+<span class="n">LL_DMA_SetMemoryAddress</span><span class="p">(</span><span class="n">DMA1</span><span class="p">,</span><span class="w"> </span><span class="n">LL_DMA_CHANNEL_1</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="p">)</span><span class="n">usart1_rx_dma_buffer</span><span class="p">);</span>
+<span class="n">LL_DMA_SetDataLength</span><span class="p">(</span><span class="n">DMA1</span><span class="p">,</span><span class="w"> </span><span class="n">LL_DMA_CHANNEL_1</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">usart1_rx_dma_buffer</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">usart1_rx_dma_buffer</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="w"> </span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Enable half transfer, and transfer complete interrupts for the DMA:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Enable half transfer &amp; transfer complete interrupts */</span>
+<span class="n">LL_DMA_EnableIT_HT</span><span class="p">(</span><span class="n">DMA1</span><span class="p">,</span><span class="w"> </span><span class="n">LL_DMA_CHANNEL_1</span><span class="p">);</span>
+<span class="n">LL_DMA_EnableIT_TC</span><span class="p">(</span><span class="n">DMA1</span><span class="p">,</span><span class="w"> </span><span class="n">LL_DMA_CHANNEL_1</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Enable DMA request, and idle interrupt for USART1:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">LL_USART_EnableDMAReq_RX</span><span class="p">(</span><span class="n">USART1</span><span class="p">);</span>
+<span class="n">LL_USART_EnableIT_IDLE</span><span class="p">(</span><span class="n">USART1</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Enable DMA channel 1:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">LL_DMA_EnableChannel</span><span class="p">(</span><span class="n">DMA1</span><span class="p">,</span><span class="w"> </span><span class="n">LL_DMA_CHANNEL_1</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The interrupt service routines needs to be properly set up. The file “startup_stm32wl55ccux.s” is already prepared with function names for which we may provide the implementation.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">DMA1_Channel1_IRQHandler</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+
+<span class="w">  </span><span class="cm">/* Half-transfer complete */</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">LL_DMA_IsEnabledIT_HT</span><span class="p">(</span><span class="n">DMA1</span><span class="p">,</span><span class="w"> </span><span class="n">LL_DMA_CHANNEL_1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">LL_DMA_IsActiveFlag_HT1</span><span class="p">(</span><span class="n">DMA1</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">LL_DMA_ClearFlag_HT1</span><span class="p">(</span><span class="n">DMA1</span><span class="p">);</span><span class="w">             </span><span class="cm">/* Clear half-transfer complete flag */</span>
+
+<span class="w">    </span><span class="c1">// Do something..</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="cm">/* Transfer-complete */</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">LL_DMA_IsEnabledIT_TC</span><span class="p">(</span><span class="n">DMA1</span><span class="p">,</span><span class="w"> </span><span class="n">LL_DMA_CHANNEL_1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">LL_DMA_IsActiveFlag_TC1</span><span class="p">(</span><span class="n">DMA1</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">LL_DMA_ClearFlag_TC1</span><span class="p">(</span><span class="n">DMA1</span><span class="p">);</span><span class="w">             </span><span class="cm">/* Clear transfer complete flag */</span>
+
+<span class="w">    </span><span class="c1">// Do something..</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">USART1_IRQHandler</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+
+<span class="w">  </span><span class="cm">/* IDLE line interrupt */</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">LL_USART_IsEnabledIT_IDLE</span><span class="p">(</span><span class="n">USART1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">LL_USART_IsActiveFlag_IDLE</span><span class="p">(</span><span class="n">USART1</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">LL_USART_ClearFlag_IDLE</span><span class="p">(</span><span class="n">USART1</span><span class="p">);</span><span class="w">        </span><span class="cm">/* Clear IDLE line flag */</span>
+
+<span class="w">    </span><span class="c1">// Do something..</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For the initial test we will loop back the received data, but convert it to hexadecimal ASCII representation. I.e. the characters we send back are the ASCII characters representing the hexadecimal representation of the binary data which we have received. For now the transmission is performed in blocking mode:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">usart1_loopback_data</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">len</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="o">*</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">;</span>
+
+<span class="w">    </span><span class="cm">/*</span>
+<span class="cm">     * This function is indirectly called on DMA TC or HT events, and on UART IDLE (if enabled) event.</span>
+<span class="cm">     * A function void &quot;usart1_check_for_rx(void)&quot; first checks the state of the DMA buffer, and then</span>
+<span class="cm">     * makes appropriate calls to this function.</span>
+<span class="cm">     *</span>
+<span class="cm">     * For the sake of this example, function does a loop-back data over UART in polling mode.</span>
+<span class="cm">     * Check ringbuff RX-based example for implementation with TX &amp; RX DMA transfer.</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">buf</span><span class="p">[</span><span class="mi">7</span><span class="p">];</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(;</span><span class="w"> </span><span class="n">len</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="o">--</span><span class="n">len</span><span class="p">,</span><span class="w"> </span><span class="o">++</span><span class="n">d</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">      </span><span class="n">snprintf</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;[%#.2x]&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">d</span><span class="p">);</span><span class="w"> </span><span class="c1">// snprintf always adds a null termination, hence use 7 as the size.</span>
+
+<span class="w">      </span><span class="k">for</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+<span class="w">        </span><span class="c1">//LL_USART_TransmitData8(USART1, *d);</span>
+<span class="w">        </span><span class="n">LL_USART_TransmitData8</span><span class="p">(</span><span class="n">USART1</span><span class="p">,</span><span class="w"> </span><span class="n">buf</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">LL_USART_IsActiveFlag_TXE</span><span class="p">(</span><span class="n">USART1</span><span class="p">))</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">      </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">LL_USART_IsActiveFlag_TC</span><span class="p">(</span><span class="n">USART1</span><span class="p">))</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Transmission through DMA will be handled after we have included the ring buffer.</p>
+</div>
+<p>The IRQ handlers for HT, TC, and IDLE must be set up to call the following function:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">usart1_check_for_rx</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">old_pos</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">pos</span><span class="p">;</span>
+
+<span class="w">    </span><span class="cm">/* Calculate current position in buffer and check if new data is available */</span>
+<span class="w">    </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ARRAY_LEN</span><span class="p">(</span><span class="n">usart1_rx_dma_buffer</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">LL_DMA_GetDataLength</span><span class="p">(</span><span class="n">DMA1</span><span class="p">,</span><span class="w"> </span><span class="n">LL_DMA_STREAM_0</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pos</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">old_pos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                       </span><span class="cm">/* Check if new received data is available */</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pos</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">old_pos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                    </span><span class="cm">/* Check if current position is over previous one, i.e. DMA write to buffer did not wrap around */</span>
+
+<span class="w">            </span><span class="n">usart1_loopback_data</span><span class="p">(</span><span class="o">&amp;</span><span class="n">usart1_rx_dma_buffer</span><span class="p">[</span><span class="n">old_pos</span><span class="p">],</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">old_pos</span><span class="p">);</span><span class="w"> </span><span class="cm">/* Process data linearly */</span>
+
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* If pos is less than old_pos the DMA must have reached the end of the buffer, and wrapped around (circular mode) */</span>
+
+<span class="w">            </span><span class="n">usart1_loopback_data</span><span class="p">(</span><span class="o">&amp;</span><span class="n">usart1_rx_dma_buffer</span><span class="p">[</span><span class="n">old_pos</span><span class="p">],</span><span class="w"> </span><span class="n">ARRAY_LEN</span><span class="p">(</span><span class="n">usart1_rx_dma_buffer</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">old_pos</span><span class="p">);</span><span class="w"> </span><span class="cm">/* Process from old_pos until end of buffer */</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pos</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">usart1_loopback_data</span><span class="p">(</span><span class="o">&amp;</span><span class="n">usart1_rx_dma_buffer</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">pos</span><span class="p">);</span><span class="w"> </span><span class="cm">/* Process from beginning of buffer until pos */</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">old_pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pos</span><span class="p">;</span><span class="w">                          </span><span class="cm">/* Save current position as old_pos for the next iteration */</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Make sure that everything up to this point is working before continuing with the next section. This includes using a ASCII table to verify that the output is in accordance with the keys that you are pressing on you keyboard.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">$</span><span class="w"> </span><span class="n">make</span><span class="w"> </span><span class="n">mon</span>
+<span class="n">picocom</span><span class="w"> </span><span class="n">v3</span><span class="mf">.1</span>
+
+<span class="n">port</span><span class="w"> </span><span class="n">is</span><span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">mcu</span><span class="o">-</span><span class="n">uart1</span>
+<span class="nl">flowcontrol</span><span class="w">    </span><span class="p">:</span><span class="w"> </span><span class="n">none</span>
+<span class="n">baudrate</span><span class="w"> </span><span class="n">is</span><span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="mi">115200</span>
+<span class="n">parity</span><span class="w"> </span><span class="n">is</span><span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="n">none</span>
+<span class="n">databits</span><span class="w"> </span><span class="n">are</span><span class="w">   </span><span class="o">:</span><span class="w"> </span><span class="mi">8</span>
+<span class="n">stopbits</span><span class="w"> </span><span class="n">are</span><span class="w">   </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="n">escape</span><span class="w"> </span><span class="n">is</span><span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="n">C</span><span class="o">-</span><span class="n">a</span>
+<span class="n">local</span><span class="w"> </span><span class="n">echo</span><span class="w"> </span><span class="n">is</span><span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">no</span>
+<span class="n">noinit</span><span class="w"> </span><span class="n">is</span><span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="n">no</span>
+<span class="n">noreset</span><span class="w"> </span><span class="n">is</span><span class="w">     </span><span class="o">:</span><span class="w"> </span><span class="n">no</span>
+<span class="n">hangup</span><span class="w"> </span><span class="n">is</span><span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="n">no</span>
+<span class="n">nolock</span><span class="w"> </span><span class="n">is</span><span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="n">no</span>
+<span class="n">send_cmd</span><span class="w"> </span><span class="n">is</span><span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="n">sz</span><span class="w"> </span><span class="o">-</span><span class="n">vv</span>
+<span class="n">receive_cmd</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">rz</span><span class="w"> </span><span class="o">-</span><span class="n">vv</span><span class="w"> </span><span class="o">-</span><span class="n">E</span>
+<span class="n">imap</span><span class="w"> </span><span class="n">is</span><span class="w">        </span><span class="o">:</span>
+<span class="n">omap</span><span class="w"> </span><span class="n">is</span><span class="w">        </span><span class="o">:</span>
+<span class="n">emap</span><span class="w"> </span><span class="n">is</span><span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">crcrlf</span><span class="p">,</span><span class="n">delbs</span><span class="p">,</span>
+<span class="n">logfile</span><span class="w"> </span><span class="n">is</span><span class="w">     </span><span class="o">:</span><span class="w"> </span><span class="n">none</span>
+<span class="nl">initstring</span><span class="w">     </span><span class="p">:</span><span class="w"> </span><span class="n">none</span>
+<span class="n">exit_after</span><span class="w"> </span><span class="n">is</span><span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="n">not</span><span class="w"> </span><span class="n">set</span>
+<span class="n">exit</span><span class="w"> </span><span class="n">is</span><span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">no</span>
+
+<span class="n">Type</span><span class="w"> </span><span class="p">[</span><span class="n">C</span><span class="o">-</span><span class="n">a</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="n">C</span><span class="o">-</span><span class="n">h</span><span class="p">]</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">see</span><span class="w"> </span><span class="n">available</span><span class="w"> </span><span class="n">commands</span>
+<span class="n">Terminal</span><span class="w"> </span><span class="n">ready</span>
+<span class="n">UART</span><span class="w"> </span><span class="n">DMA</span><span class="w"> </span><span class="n">demo</span><span class="w"> </span><span class="n">application</span>
+<span class="p">[</span><span class="mh">0x61</span><span class="p">][</span><span class="mh">0x73</span><span class="p">][</span><span class="mh">0x64</span><span class="p">][</span><span class="mh">0x66</span><span class="p">]</span>
+<span class="n">Terminating</span><span class="p">...</span>
+<span class="n">Skipping</span><span class="w"> </span><span class="n">tty</span><span class="w"> </span><span class="n">reset</span><span class="p">...</span>
+<span class="n">Thanks</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">using</span><span class="w"> </span><span class="n">picocom</span>
+<span class="n">Built</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="n">mon</span>
+</pre></div>
+</div>
+<p>In the above example the keys pressed where ‘a’, ‘s’, ‘d’, ‘f’.</p>
+</section>
+<section id="adding-ring-buffer-library">
+<h3>Adding ring buffer library<a class="headerlink" href="#adding-ring-buffer-library" title="Permalink to this headline">#</a></h3>
+<p>Create a new sub directory “lib” inside your top level project directory. Clone the <em>lwrb</em> library as a git submodule in to this directory:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git submodule add git@github.com:MaJerle/lwrb.git</span>
+</pre></div>
+</div>
+<p>Make the necessary additions to CMakeLists.txt for it to link the library to the project:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># Add subdir with lwrb and link to project</span>
+<span class="nb">add_subdirectory</span><span class="p">(</span><span class="s2">&quot;lib/lwrb/lwrb&quot;</span><span class="w"> </span><span class="s">lwrb</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span><span class="w"> </span><span class="s">lwrb</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>First we will test the library by adding some data to the buffer, and then reading it back.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">simple_lwrb_demo</span><span class="p">(){</span>
+
+<span class="w">    </span><span class="n">lwrb_t</span><span class="w"> </span><span class="n">ringbuf</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">ringbuf_data</span><span class="p">[</span><span class="mi">16</span><span class="p">];</span>
+
+<span class="w">    </span><span class="n">lwrb_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ringbuf</span><span class="p">,</span><span class="w"> </span><span class="n">ringbuf_data</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">ringbuf_data</span><span class="p">));</span>
+
+<span class="w">    </span><span class="n">lwrb_write</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ringbuf</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Test msg&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">);</span><span class="w"> </span><span class="c1">// 9 bytes because of the zero terminator.</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Number of bytes in the buffer: %d</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">lwrb_get_full</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ringbuf</span><span class="p">));</span>
+
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">user_buffer</span><span class="p">[</span><span class="mi">16</span><span class="p">];</span>
+<span class="w">    </span><span class="n">lwrb_read</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ringbuf</span><span class="p">,</span><span class="w"> </span><span class="n">user_buffer</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;The buffer contains the text: %s</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">user_buffer</span><span class="p">);</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Since we are using <code class="code docutils literal notranslate"><span class="pre">printf()</span></code> we need to redirect the data to our UART. A simple but crude way of doing this is as follows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">_write</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">ptr</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">len</span><span class="p">){</span>
+
+<span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">len</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+<span class="w">            </span><span class="n">LL_USART_TransmitData8</span><span class="p">(</span><span class="n">USART1</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="o">++</span><span class="p">);</span>
+<span class="w">            </span><span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">LL_USART_IsActiveFlag_TXE_TXFNF</span><span class="p">(</span><span class="n">USART1</span><span class="p">)){};</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">LL_USART_IsActiveFlag_TC</span><span class="p">(</span><span class="n">USART1</span><span class="p">))</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">len</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Note that the above code is blocking and should not be used in production code. In the next section we will send the <code class="code docutils literal notranslate"><span class="pre">printf()</span></code> traffic to the ring buffer, and transmit it using DMA.</p>
+</div>
+<p>Add a call to the <code class="code docutils literal notranslate"><span class="pre">simple_lwrb_demo()</span></code> function in your <code class="code docutils literal notranslate"><span class="pre">main()</span></code> function, and use a UART monitor to observe that the library is working.</p>
+<p>After we have made sure that the <em>lwrb</em> library is working, the next step is to integrate it with our DMA code. The library is specifically designed for this integration,</p>
+<p>We are going to need two instances of the library for each UART that we are using. One for reception, and one for transmission.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">lwrb_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">usart1_tx_rb</span><span class="p">,</span><span class="w"> </span><span class="n">usart1_tx_rb_data</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">usart1_tx_rb_data</span><span class="p">));</span>
+<span class="n">lwrb_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">usart1_rx_rb</span><span class="p">,</span><span class="w"> </span><span class="n">usart1_rx_rb_data</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">usart1_rx_rb_data</span><span class="p">));</span>
+</pre></div>
+</div>
+</section>
+<section id="dma-transfer-from-uart-to-lwrb">
+<h3>DMA transfer from UART to <em>lwrb</em><a class="headerlink" href="#dma-transfer-from-uart-to-lwrb" title="Permalink to this headline">#</a></h3>
+<p>Unless we want to have an interrupt on every received byte, the DMA needs to have a separate receive buffer in addition to the <em>lwrb</em> receive buffer. That way we are free to wait for the DMA buffer to be filled to some level before some interrupt needs to process the data. The DMA is configured in circular mode, which means that it will start overwriting the oldest data in the buffer if receiving data after the buffer is full.</p>
+<p>For implementing reliable reception of data from the UART we will be using three interrupts:</p>
+<ul class="simple">
+<li><p>USART idle line interrupt</p></li>
+<li><p>DMA half transfer interrupt</p></li>
+<li><p>DMA transfer complete interrupt</p></li>
+</ul>
+<p>The idle line interrupt will ensure that the data in the DMA buffer is copied to our ring buffer as soon as the UART is idle. The half transfer and transfer complete interrupts copies the data from the DMA buffer when it is half full, and full. They are both needed since the buffer wraps around (circular mode) when it is full.</p>
+<p>Declare memory for the ring buffer structure, and the actual buffer to hold received data:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">lwrb_t</span><span class="w"> </span><span class="n">usart1_rx_rb</span><span class="p">;</span>
+<span class="kt">uint8_t</span><span class="w"> </span><span class="n">usart1_rx_rb_data</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
+</pre></div>
+</div>
+<p>Initialize the <em>lwrb</em></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">uart_init</span><span class="p">(){</span>
+
+<span class="w">  </span><span class="n">lwrb_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">usart1_rx_rb</span><span class="p">,</span><span class="w"> </span><span class="n">usart1_rx_rb_data</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">usart1_rx_rb_data</span><span class="p">));</span>
+<span class="w">  </span><span class="n">usart1_init</span><span class="p">();</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In a similar manner to the previous example, all three interrupts will be calling the same function <code class="code docutils literal notranslate"><span class="pre">usart1_check_for_rx()</span></code> which is responsible for copying any received data from the DMA RX buffer to the <em>lwrb</em> RX buffer.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">usart1_check_for_rx</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">old_pos</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">pos</span><span class="p">;</span>
+
+<span class="w">    </span><span class="cm">/* Calculate current position in buffer and check if new data is available */</span>
+<span class="w">    </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ARRAY_LEN</span><span class="p">(</span><span class="n">usart1_rx_dma_buffer</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">LL_DMA_GetDataLength</span><span class="p">(</span><span class="n">DMA1</span><span class="p">,</span><span class="w"> </span><span class="n">LL_DMA_STREAM_0</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pos</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">old_pos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                       </span><span class="cm">/* Check if new received data is available */</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pos</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">old_pos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                    </span><span class="cm">/* Check if current position is over previous one, i.e. DMA write to buffer did not wrap around */</span>
+
+<span class="w">            </span><span class="n">usart1_process_data</span><span class="p">(</span><span class="o">&amp;</span><span class="n">usart1_rx_dma_buffer</span><span class="p">[</span><span class="n">old_pos</span><span class="p">],</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">old_pos</span><span class="p">);</span><span class="w"> </span><span class="cm">/* Process data linearly */</span>
+
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* If pos is less than old_pos the DMA must have reached the end of the buffer, and wrapped around (circular mode) */</span>
+
+<span class="w">            </span><span class="n">usart1_process_data</span><span class="p">(</span><span class="o">&amp;</span><span class="n">usart1_rx_dma_buffer</span><span class="p">[</span><span class="n">old_pos</span><span class="p">],</span><span class="w"> </span><span class="n">ARRAY_LEN</span><span class="p">(</span><span class="n">usart1_rx_dma_buffer</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">old_pos</span><span class="p">);</span><span class="w"> </span><span class="cm">/* Process from old_pos until end of buffer */</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pos</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">usart1_process_data</span><span class="p">(</span><span class="o">&amp;</span><span class="n">usart1_rx_dma_buffer</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">pos</span><span class="p">);</span><span class="w"> </span><span class="cm">/* Process from beginning of buffer until pos */</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">old_pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pos</span><span class="p">;</span><span class="w">                          </span><span class="cm">/* Save current position as old_pos for the next iteration */</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The process data function simply writes the DMA buffer data to the <em>lwrb</em> ring buffer:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">usart1_process_data</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">len</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">lwrb_write</span><span class="p">(</span><span class="o">&amp;</span><span class="n">usart1_rx_rb</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">len</span><span class="p">);</span><span class="w">  </span><span class="cm">/* Write data to receive buffer */</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="checking-for-received-data-in-application">
+<h3>Checking for received data in application<a class="headerlink" href="#checking-for-received-data-in-application" title="Permalink to this headline">#</a></h3>
+<p>In order to check if new data is available from the UART one may use the following structure:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lwrb_read</span><span class="p">(</span><span class="o">&amp;</span><span class="n">usart1_rx_rb</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">rx_byte</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Check if data is available, and read one byte if it is.</span>
+
+<span class="w">    </span><span class="c1">// Do something depending on the value of &#39;rx_byte&#39;</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Use the following code to check that it is working:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lwrb_read</span><span class="p">(</span><span class="o">&amp;</span><span class="n">usart1_rx_rb</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">rx_byte</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Check if data is available, and read one byte if it is.</span>
+
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="sc">&#39;A&#39;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">rx_byte</span><span class="p">){</span>
+<span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;You pressed A</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="sc">&#39;B&#39;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">rx_byte</span><span class="p">){</span>
+<span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;You pressed B</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span><span class="p">{</span>
+<span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;You pressed something else...</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="dma-transfer-from-lwrb-to-uart">
+<h3>DMA transfer from <em>lwrb</em> to UART<a class="headerlink" href="#dma-transfer-from-lwrb-to-uart" title="Permalink to this headline">#</a></h3>
+<p>Up until this point the transmission of data from the microcontroller through the UART has been performed in blocking mode. I.e. the application has been waiting for the UART to complete transmission of all bytes before continuing with something else (<code class="code docutils literal notranslate"><span class="pre">while(!LL_USART_IsActiveFlag_TXE_TXFNF(USART1)){};</span></code>).</p>
+<p>In this section we will add a second instance of the <em>lwrb</em> library which will enqueue data to be transmitted, and configure the DMA to transmit this data on request from the application.</p>
+<p>The memory for the ring buffer is declared by:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">lwrb_t</span><span class="w"> </span><span class="n">usart1_tx_rb</span><span class="p">;</span>
+<span class="kt">uint8_t</span><span class="w"> </span><span class="n">usart1_tx_rb_data</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
+</pre></div>
+</div>
+<p>The two ring buffers are initialized:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">uart_init</span><span class="p">(){</span>
+
+<span class="w">  </span><span class="n">lwrb_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">usart1_rx_rb</span><span class="p">,</span><span class="w"> </span><span class="n">usart1_rx_rb_data</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">usart1_rx_rb_data</span><span class="p">));</span>
+<span class="w">  </span><span class="n">lwrb_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">usart1_tx_rb</span><span class="p">,</span><span class="w"> </span><span class="n">usart1_tx_rb_data</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">usart1_tx_rb_data</span><span class="p">));</span>
+
+<span class="w">  </span><span class="n">usart1_init</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The auto-generated DMA configuration code from CubeMX should look similar to the following:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* USART1_TX Init */</span>
+<span class="n">LL_DMA_SetPeriphRequest</span><span class="p">(</span><span class="n">DMA1</span><span class="p">,</span><span class="w"> </span><span class="n">LL_DMA_CHANNEL_2</span><span class="p">,</span><span class="w"> </span><span class="n">LL_DMAMUX_REQ_USART1_TX</span><span class="p">);</span>
+<span class="n">LL_DMA_SetDataTransferDirection</span><span class="p">(</span><span class="n">DMA1</span><span class="p">,</span><span class="w"> </span><span class="n">LL_DMA_CHANNEL_2</span><span class="p">,</span><span class="w"> </span><span class="n">LL_DMA_DIRECTION_MEMORY_TO_PERIPH</span><span class="p">);</span>
+<span class="n">LL_DMA_SetChannelPriorityLevel</span><span class="p">(</span><span class="n">DMA1</span><span class="p">,</span><span class="w"> </span><span class="n">LL_DMA_CHANNEL_2</span><span class="p">,</span><span class="w"> </span><span class="n">LL_DMA_PRIORITY_LOW</span><span class="p">);</span>
+<span class="n">LL_DMA_SetMode</span><span class="p">(</span><span class="n">DMA1</span><span class="p">,</span><span class="w"> </span><span class="n">LL_DMA_CHANNEL_2</span><span class="p">,</span><span class="w"> </span><span class="n">LL_DMA_MODE_NORMAL</span><span class="p">);</span>
+<span class="n">LL_DMA_SetPeriphIncMode</span><span class="p">(</span><span class="n">DMA1</span><span class="p">,</span><span class="w"> </span><span class="n">LL_DMA_CHANNEL_2</span><span class="p">,</span><span class="w"> </span><span class="n">LL_DMA_PERIPH_NOINCREMENT</span><span class="p">);</span>
+<span class="n">LL_DMA_SetMemoryIncMode</span><span class="p">(</span><span class="n">DMA1</span><span class="p">,</span><span class="w"> </span><span class="n">LL_DMA_CHANNEL_2</span><span class="p">,</span><span class="w"> </span><span class="n">LL_DMA_MEMORY_INCREMENT</span><span class="p">);</span>
+<span class="n">LL_DMA_SetPeriphSize</span><span class="p">(</span><span class="n">DMA1</span><span class="p">,</span><span class="w"> </span><span class="n">LL_DMA_CHANNEL_2</span><span class="p">,</span><span class="w"> </span><span class="n">LL_DMA_PDATAALIGN_BYTE</span><span class="p">);</span>
+<span class="n">LL_DMA_SetMemorySize</span><span class="p">(</span><span class="n">DMA1</span><span class="p">,</span><span class="w"> </span><span class="n">LL_DMA_CHANNEL_2</span><span class="p">,</span><span class="w"> </span><span class="n">LL_DMA_MDATAALIGN_BYTE</span><span class="p">);</span>
+<span class="n">LL_DMA_DisableChannelPrivilege</span><span class="p">(</span><span class="n">DMA1</span><span class="p">,</span><span class="w"> </span><span class="n">LL_DMA_CHANNEL_2</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>You need to add code to enable transfer complete interrupts:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Enable TC interrupts for TX */</span>
+<span class="n">LL_DMA_EnableIT_TC</span><span class="p">(</span><span class="n">DMA1</span><span class="p">,</span><span class="w"> </span><span class="n">LL_DMA_CHANNEL_2</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Set the interrupt priority:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">NVIC_SetPriority</span><span class="p">(</span><span class="n">DMA1_Channel2_IRQn</span><span class="p">,</span><span class="w"> </span><span class="n">NVIC_EncodePriority</span><span class="p">(</span><span class="n">NVIC_GetPriorityGrouping</span><span class="p">(),</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">));</span>
+<span class="n">NVIC_EnableIRQ</span><span class="p">(</span><span class="n">DMA1_Channel2_IRQn</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Enable DMA request for TX:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">LL_USART_EnableDMAReq_TX</span><span class="p">(</span><span class="n">USART1</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The DMA channel for TX should not be activated as part of the initialization (The RX channel is activated by the <code class="code docutils literal notranslate"><span class="pre">LL_DMA_EnableChannel(DMA1,</span> <span class="pre">LL_DMA_CHANNEL_1);</span></code> function call). Instead the tranmission should be activated by the application whenever it is time to transmit, and also by the DMA tranfer complete ISR for channel 2.</p>
+<p>A global variable is used to keep track of the current length of data in the process of tranmission by the DMA:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">volatile</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">usart1_tx_dma_current_len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>It is used to determine if DMA tranmission is on going, or finished. If <code class="code docutils literal notranslate"><span class="pre">usart1_tx_dma_current_len</span> <span class="pre">==</span> <span class="pre">0</span></code>, and there is currently data available in the <em>lwrb</em> transmission ring buffer a new DMA tranmission will be initiated.</p>
+<p>The following function starts a new tranmission, and since the DMA is in normal mode it will stop itself once it reaches the end of the configured memory buffer.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">uint8_t</span><span class="w"> </span><span class="nf">usart1_start_dma_tx</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">primask</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">started</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">primask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">__get_PRIMASK</span><span class="p">();</span>
+<span class="w">    </span><span class="n">__disable_irq</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">usart1_tx_dma_current_len</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">usart1_tx_dma_current_len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lwrb_get_linear_block_read_length</span><span class="p">(</span><span class="o">&amp;</span><span class="n">usart1_tx_rb</span><span class="p">))</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">          </span><span class="cm">/* Disable channel if enabled */</span>
+<span class="w">          </span><span class="n">LL_DMA_DisableChannel</span><span class="p">(</span><span class="n">DMA1</span><span class="p">,</span><span class="w"> </span><span class="n">LL_DMA_CHANNEL_2</span><span class="p">);</span>
+
+<span class="w">          </span><span class="cm">/* Clear all flags */</span>
+<span class="w">          </span><span class="n">LL_DMA_ClearFlag_TC2</span><span class="p">(</span><span class="n">DMA1</span><span class="p">);</span>
+<span class="w">          </span><span class="n">LL_DMA_ClearFlag_HT2</span><span class="p">(</span><span class="n">DMA1</span><span class="p">);</span>
+<span class="w">          </span><span class="n">LL_DMA_ClearFlag_GI2</span><span class="p">(</span><span class="n">DMA1</span><span class="p">);</span><span class="w"> </span><span class="c1">// Clear global interrupt flag</span>
+<span class="w">          </span><span class="n">LL_DMA_ClearFlag_TE2</span><span class="p">(</span><span class="n">DMA1</span><span class="p">);</span><span class="w"> </span><span class="c1">// Clear transfer error flag</span>
+
+<span class="w">          </span><span class="cm">/* Prepare DMA data and length */</span>
+<span class="w">          </span><span class="n">LL_DMA_SetDataLength</span><span class="p">(</span><span class="n">DMA1</span><span class="p">,</span><span class="w"> </span><span class="n">LL_DMA_CHANNEL_2</span><span class="p">,</span><span class="w"> </span><span class="n">usart1_tx_dma_current_len</span><span class="p">);</span>
+<span class="w">          </span><span class="n">LL_DMA_SetMemoryAddress</span><span class="p">(</span><span class="n">DMA1</span><span class="p">,</span><span class="w"> </span><span class="n">LL_DMA_CHANNEL_2</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="p">)</span><span class="n">lwrb_get_linear_block_read_address</span><span class="p">(</span><span class="o">&amp;</span><span class="n">usart1_tx_rb</span><span class="p">));</span>
+
+<span class="w">          </span><span class="cm">/* Start transfer */</span>
+<span class="w">          </span><span class="n">LL_DMA_EnableChannel</span><span class="p">(</span><span class="n">DMA1</span><span class="p">,</span><span class="w"> </span><span class="n">LL_DMA_CHANNEL_2</span><span class="p">);</span>
+<span class="w">          </span><span class="n">started</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">__set_PRIMASK</span><span class="p">(</span><span class="n">primask</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">started</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The ISR for the UART TX DMA is as follows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">DMA1_Channel2_IRQHandler</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
+
+<span class="w">  </span><span class="cm">/* Check transfer complete */</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">LL_DMA_IsEnabledIT_TC</span><span class="p">(</span><span class="n">DMA1</span><span class="p">,</span><span class="w"> </span><span class="n">LL_DMA_CHANNEL_2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">LL_DMA_IsActiveFlag_TC2</span><span class="p">(</span><span class="n">DMA1</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">LL_DMA_ClearFlag_TC2</span><span class="p">(</span><span class="n">DMA1</span><span class="p">);</span><span class="w">             </span><span class="cm">/* Clear transfer complete flag */</span>
+
+<span class="w">      </span><span class="n">lwrb_skip</span><span class="p">(</span><span class="o">&amp;</span><span class="n">usart1_tx_rb</span><span class="p">,</span><span class="w"> </span><span class="n">usart1_tx_dma_current_len</span><span class="p">);</span><span class="w"> </span><span class="cm">/* Skip sent data, mark as read */</span>
+
+<span class="w">      </span><span class="n">usart1_tx_dma_current_len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">           </span><span class="cm">/* Clear length variable */</span>
+<span class="w">      </span><span class="n">usart1_start_dma_tx</span><span class="p">();</span><span class="w">          </span><span class="cm">/* Start sending more data */</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="adding-proper-printf-scanf-and-fprintf-support">
+<h3>Adding proper printf, scanf, and fprintf support<a class="headerlink" href="#adding-proper-printf-scanf-and-fprintf-support" title="Permalink to this headline">#</a></h3>
+<p>We have already seen how <code class="code docutils literal notranslate"><span class="pre">printf()</span></code> can be directed to a specific UART device by overriding the low level <code class="code docutils literal notranslate"><span class="pre">_write()</span></code> function. The only difference this time is that we will be writing to the ring buffer, and return without having to wait for the UART to finish transmitting the data.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">_read</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">file</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">len</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">_write</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">file</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">ptr</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">len</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="code docutils literal notranslate"><span class="pre">fprintf()</span></code> function takes a FILE object as the first parameter. This FILE object can be configured to point to a UART device. Since we are using more than one UART is is useful to be able to select where the data should go. This can be more convenient than the combination of declaring some buffer, fill it using a <code class="code docutils literal notranslate"><span class="pre">snprintf()</span></code> call, and then to have some low level UART transmit function. A single <code class="code docutils literal notranslate"><span class="pre">fprintf()</span></code> call is all that is needed.</p>
+<p>The <code class="code docutils literal notranslate"><span class="pre">fopencookie()</span></code> function allows us to create a custom implementation for a I/O stream. It takes three arguments, a void pointer to a cookie, a mode, and a stucture of four I/O functions. The first parameter is intended to point to some custom structure which our custom I/O functions will be using, and can be <code class="code docutils literal notranslate"><span class="pre">NULL</span></code> for our purposes.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">ssize_t</span><span class="w"> </span><span class="nf">cookie_uart_write</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">cookie</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="p">){</span>
+
+<span class="w">  </span><span class="n">lwrb_write</span><span class="p">(</span><span class="o">&amp;</span><span class="n">usart1_tx_rb</span><span class="p">,</span><span class="w"> </span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">);</span><span class="w">   </span><span class="cm">/* Write data to transmit buffer */</span>
+<span class="w">  </span><span class="n">usart1_start_dma_tx</span><span class="p">();</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">size</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">uart1_stream</span><span class="p">;</span>
+<span class="n">cookie_io_functions_t</span><span class="w"> </span><span class="n">uart1_cookie_funcs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">.</span><span class="n">read</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span>
+<span class="w">  </span><span class="p">.</span><span class="n">write</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cookie_uart_write</span><span class="p">,</span>
+<span class="w">  </span><span class="p">.</span><span class="n">seek</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span>
+<span class="w">  </span><span class="p">.</span><span class="n">close</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">uart1_stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fopencookie</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;w&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">uart1_cookie_funcs</span><span class="p">);</span>
+<span class="n">setlinebuf</span><span class="p">(</span><span class="n">uart1_stream</span><span class="p">);</span><span class="w"> </span><span class="c1">// Set line buffered mode on the stream</span>
+
+<span class="n">fprintf</span><span class="p">(</span><span class="n">uart1_stream</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;This is a test.</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="using-a-custom-printf-library">
+<h3>Using a custom printf library<a class="headerlink" href="#using-a-custom-printf-library" title="Permalink to this headline">#</a></h3>
+<p>The previous section explored how to use the GNU version of libc for <code class="code docutils literal notranslate"><span class="pre">printf()</span></code>. In this section we will use an alternative library which is specifically designed for embedded systems. The advantage is less memory consumption, fewer dependencies, and more easy redirection of the output. Since the library has zero non standard dependencies portability should not be an issue.</p>
+<p>The repository for the printf library does not contain any CMakeLists.txt, so in order for us to add one we will be using the following directory structure:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">.</span>
+<span class="go">├── libprintf</span>
+<span class="go">│   ├── CMakeLists.txt</span>
+<span class="go">│   └── printf</span>
+<span class="go">│       ├── codecov.yml</span>
+<span class="go">│       ├── LICENSE</span>
+<span class="go">│       ├── Makefile</span>
+<span class="go">│       ├── printf.c</span>
+<span class="go">│       ├── printf.h</span>
+<span class="go">│       ├── README.md</span>
+<span class="go">│       └── test</span>
+<span class="go">│           ├── catch.hpp</span>
+<span class="go">│           └── test_suite.cpp</span>
+<span class="go">└── lwrb</span>
+</pre></div>
+</div>
+<p>We create a new directory “libprintf” and clone the submodule in to that directory:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git submodule add git@github.com:mpaland/printf.git</span>
+</pre></div>
+</div>
+<p>Then we create a new CMakeLists.txt with the following contents, and place it in the “libprintf” directory:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.22</span><span class="p">)</span>
+
+<span class="c"># Debug message</span>
+<span class="nb">message</span><span class="p">(</span><span class="s2">&quot;Entering ${CMAKE_CURRENT_LIST_DIR}/CMakeLists.txt&quot;</span><span class="p">)</span>
+
+<span class="c"># Register core library</span>
+<span class="nb">add_library</span><span class="p">(</span><span class="s">libprintf</span><span class="w"> </span><span class="s">INTERFACE</span><span class="p">)</span>
+<span class="nb">target_sources</span><span class="p">(</span><span class="s">libprintf</span><span class="w"> </span><span class="s">PUBLIC</span><span class="w"> </span><span class="o">${</span><span class="nv">CMAKE_CURRENT_LIST_DIR</span><span class="o">}</span><span class="s">/printf/printf.c</span><span class="p">)</span>
+<span class="nb">target_include_directories</span><span class="p">(</span><span class="s">libprintf</span><span class="w"> </span><span class="s">INTERFACE</span><span class="w"> </span><span class="o">${</span><span class="nv">CMAKE_CURRENT_LIST_DIR</span><span class="o">}</span><span class="s">/printf</span><span class="p">)</span>
+
+<span class="c"># Register other modules</span>
+
+<span class="c"># Debug message</span>
+<span class="nb">message</span><span class="p">(</span><span class="s2">&quot;Exiting ${CMAKE_CURRENT_LIST_DIR}/CMakeLists.txt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Finally we add our custom implementation of the <code class="code docutils literal notranslate"><span class="pre">_putchar</span></code> function to send the printf data to the UART:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">_putchar</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">character</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="n">lwrb_write</span><span class="p">(</span><span class="o">&amp;</span><span class="n">usart1_tx_rb</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">character</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w">   </span><span class="cm">/* Write data to transmit buffer */</span>
+<span class="w">  </span><span class="n">usart1_start_dma_tx</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The library does not support <code class="code docutils literal notranslate"><span class="pre">fprintf()</span></code>, but instead has a function <code class="code docutils literal notranslate"><span class="pre">fctprintf()</span></code> which takes a callback to an output function as the first parameter. This is not as powerful as the I/O stream of libc, but it is sufficient for a lot of applications.</p>
+</section>
+</section>
 </section>
 
 

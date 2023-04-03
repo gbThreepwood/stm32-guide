@@ -279,12 +279,63 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#configure-the-adc-for-polling">
+   Configure the ADC for polling
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#self-calibration">
+     Self calibration
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sequencer-configuration">
+     Sequencer configuration
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#temperature-battery-and-reference-voltage-channel">
+     Temperature, battery, and reference voltage channel
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#continuos-conversion-and-interrupt">
+   Continuos conversion and interrupt
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#continuos-conversion-and-dma">
+   Continuos conversion and DMA
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -296,6 +347,46 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#configure-the-adc-for-polling">
+   Configure the ADC for polling
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#self-calibration">
+     Self calibration
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sequencer-configuration">
+     Sequencer configuration
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#temperature-battery-and-reference-voltage-channel">
+     Temperature, battery, and reference voltage channel
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#continuos-conversion-and-interrupt">
+   Continuos conversion and interrupt
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#continuos-conversion-and-dma">
+   Continuos conversion and DMA
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -305,6 +396,55 @@ title="Print to PDF"
                 
   <section id="stm32-analog-to-digital-converter-adc">
 <h1>STM32 Analog to digital converter (ADC)<a class="headerlink" href="#stm32-analog-to-digital-converter-adc" title="Permalink to this headline">#</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This article is a work in progress</p>
+</div>
+<p>The ADC supports 12 external channels, as well as 4 internal channels. The internal channels are connected to a temperature sensor, a reference voltage, one of the DAC outputs, and the battery supply pin of the microcontroller.</p>
+<section id="configure-the-adc-for-polling">
+<h2>Configure the ADC for polling<a class="headerlink" href="#configure-the-adc-for-polling" title="Permalink to this headline">#</a></h2>
+<section id="self-calibration">
+<h3>Self calibration<a class="headerlink" href="#self-calibration" title="Permalink to this headline">#</a></h3>
+<p>The ADC has a build in calibration feature where it calculates a error correction value for each of the internal sampling capacitors. It is recommended to run this calibration on start up of the microcontroller, before the ADC is used.</p>
+</section>
+<section id="sequencer-configuration">
+<h3>Sequencer configuration<a class="headerlink" href="#sequencer-configuration" title="Permalink to this headline">#</a></h3>
+<p>The ADC in the STM32 uses a configurable sequencer to automatically step through the various input channels in order to continuously convert multiple inputs. Even if you are manually triggering the conversion from software, the sequencer must be configured for the channels of interest. Each time you initiate a conversion the ADC peripheral will select the next input in the sequence, wrapping around as it finished with the last input.</p>
+<p>The channels in the sequencer can be placed in any arbitrary order.</p>
+<p>If you insist on the “Arduino way” of doing things (i.e. a call to some function such as: <code class="code docutils literal notranslate"><span class="pre">adc_read(channel_1)</span></code> should initiate a conversion on the specified channel and return the converted value), you will have to implement some library around the low level API. Such libraries are available, but if you think that you want to do it this way you are (probably) wrong.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">LL_ADC_REG_SetSequencerRanks</span><span class="p">(</span><span class="n">ADC</span><span class="p">,</span><span class="w"> </span><span class="n">LL_ADC_REG_RANK_1</span><span class="p">,</span><span class="w"> </span><span class="n">LL_ADC_CHANNEL_4</span><span class="p">);</span>
+<span class="n">LL_ADC_REG_SetSequencerRanks</span><span class="p">(</span><span class="n">ADC</span><span class="p">,</span><span class="w"> </span><span class="n">LL_ADC_REG_RANK_2</span><span class="p">,</span><span class="w"> </span><span class="n">LL_ADC_CHANNEL_5</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">LL_ADC_REG_ReadConversionData12</span><span class="p">(</span><span class="n">ADC</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="temperature-battery-and-reference-voltage-channel">
+<h3>Temperature, battery, and reference voltage channel<a class="headerlink" href="#temperature-battery-and-reference-voltage-channel" title="Permalink to this headline">#</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">LL_ADC_REG_SetSequencerRanks</span><span class="p">(</span><span class="n">ADC</span><span class="p">,</span><span class="w"> </span><span class="n">LL_ADC_REG_RANK_1</span><span class="p">,</span><span class="w"> </span><span class="n">LL_ADC_CHANNEL_TEMPSENSOR</span><span class="p">);</span>
+<span class="n">LL_ADC_SetChannelSamplingTime</span><span class="p">(</span><span class="n">ADC</span><span class="p">,</span><span class="w"> </span><span class="n">LL_ADC_CHANNEL_TEMPSENSOR</span><span class="p">,</span><span class="w"> </span><span class="n">LL_ADC_SAMPLINGTIME_39CYCLES_5</span><span class="p">);</span>
+<span class="n">LL_ADC_SetCommonPathInternalCh</span><span class="p">(</span><span class="n">__LL_ADC_COMMON_INSTANCE</span><span class="p">(</span><span class="n">ADC</span><span class="p">),</span><span class="w"> </span><span class="n">LL_ADC_PATH_INTERNAL_TEMPSENSOR</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">LL_ADC_PATH_INTERNAL_VREFINT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">LL_ADC_PATH_INTERNAL_VBAT</span><span class="p">);</span>
+
+<span class="n">LL_ADC_REG_SetSequencerRanks</span><span class="p">(</span><span class="n">ADC</span><span class="p">,</span><span class="w"> </span><span class="n">LL_ADC_REG_RANK_2</span><span class="p">,</span><span class="w"> </span><span class="n">LL_ADC_CHANNEL_VREFINT</span><span class="p">);</span>
+<span class="n">LL_ADC_SetChannelSamplingTime</span><span class="p">(</span><span class="n">ADC</span><span class="p">,</span><span class="w"> </span><span class="n">LL_ADC_CHANNEL_VREFINT</span><span class="p">,</span><span class="w"> </span><span class="n">LL_ADC_SAMPLINGTIME_39CYCLES_5</span><span class="p">);</span>
+
+<span class="n">LL_ADC_REG_SetSequencerRanks</span><span class="p">(</span><span class="n">ADC</span><span class="p">,</span><span class="w"> </span><span class="n">LL_ADC_REG_RANK_3</span><span class="p">,</span><span class="w"> </span><span class="n">LL_ADC_CHANNEL_VBAT</span><span class="p">);</span>
+<span class="n">LL_ADC_SetChannelSamplingTime</span><span class="p">(</span><span class="n">ADC</span><span class="p">,</span><span class="w"> </span><span class="n">LL_ADC_CHANNEL_VBAT</span><span class="p">,</span><span class="w"> </span><span class="n">LL_ADC_SAMPLINGTIME_39CYCLES_5</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="continuos-conversion-and-interrupt">
+<h2>Continuos conversion and interrupt<a class="headerlink" href="#continuos-conversion-and-interrupt" title="Permalink to this headline">#</a></h2>
+<p>If continuous conversions are needed it is possible to use a hardware timer to initiate them. A interrupt on the timer can then be used to activate the ADC. Alternatively a software timer, or time event generator can also be used.</p>
+<p>The ADC is capable of generating an interrupt on end of conversion. This interrupt can be used to signal the main application that new data is available, e.g. by publishing a “ADC_EVENT” signal.</p>
+</section>
+<section id="continuos-conversion-and-dma">
+<h2>Continuos conversion and DMA<a class="headerlink" href="#continuos-conversion-and-dma" title="Permalink to this headline">#</a></h2>
+<p>The DMA is the most efficient way to transfer converted data to memory. It is the ideal solution if high conversion rates are needed, but it might also be used with lower conversion rates.</p>
+<p>The DMA controller has multiple channels, and could be utilized for several different peripherals in a single application. If this is the case it becomes important to verify that there are no conflicts in the DMA setup. Make sure that you perform thorough testing of all peripherals after making adjustments in the configuration of a single peripheral. In practice this should be performed automatically by means of unit and integration testing.</p>
+</section>
 </section>
 
 
