@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.16)
 
-set(CMAKE_TOOLCHAIN_FILE ${CMAKE_CURRENT_SOURCE_DIR}/../../stm32-cmake/cmake/stm32_gcc.cmake)
-set(STM32_CUBE_L4_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../../STM32CubeL4)
+set(CMAKE_TOOLCHAIN_FILE ${CMAKE_CURRENT_SOURCE_DIR}/../../../stm32-cmake/cmake/stm32_gcc.cmake)
+set(STM32_CUBE_L4_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../../../STM32CubeL4)
 
 project(adc_read C ASM)
 set(CMAKE_INCLUDE_CURRENT_DIR TRUE)

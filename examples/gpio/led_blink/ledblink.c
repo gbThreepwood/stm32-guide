@@ -24,13 +24,19 @@
 #define RED_LED_PORT           GPIOB
 #define RED_LED_PIN            LL_GPIO_PIN_6
 
+#define BLUE_LED_FREQ 		0.5
+#define BLUE_LED_PERIOD		1/BLUE_LED_PERIOD
+#define BLUE_LED_HALF_PERIODMS  BLUE_LED_PERIOD*500
+
+
 void SysTick_Handler(void)
 {
+
     static uint_fast32_t counter = 0;
     counter++;
 
     // 1 Hz blinking
-    if ((counter % 500) == 0)
+    if ((counter % (BLUE_LED_PERIOD/2)) == 0)
         LL_GPIO_TogglePin(BLUE_LED_PORT, BLUE_LED_PIN);
 
     // 2 Hz blinking

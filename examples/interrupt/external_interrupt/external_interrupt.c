@@ -1,19 +1,20 @@
 /**
- * @file ledblink.c
+ * @file external_interrupt.c
  * @author Eirik Haustveit (eirik@haustveit.net)
- * @brief LED blink demo
+ * @brief External interrupt demo
  * @version 0.1
  * @date 2023-01-30
  * 
  * @copyright Copyright (c) 2023
  * 
- * Blinks external LEDs connected to pin D8, D9 and D10 on the Nucleo-L476RG
+ * Demonstration of external interrupts on the Nucleo-L476RG
  * 
  */
 #include <stm32l4xx_ll_gpio.h>
 #include <stm32l4xx_ll_cortex.h>
 #include <stm32l4xx_ll_rcc.h>
-#include "stm32l4xx_ll_bus.h"
+#include <stm32l4xx_ll_bus.h>
+#include <stm32l4xx_ll_exti.h>
 
 #define BLUE_LED_PORT          GPIOA
 #define BLUE_LED_PIN           LL_GPIO_PIN_9
@@ -23,6 +24,12 @@
 
 #define RED_LED_PORT           GPIOB
 #define RED_LED_PIN            LL_GPIO_PIN_6
+
+#define ONBOARD_LED_PORT       GPIOA
+#define ONBOARD_LED_PIN        LL_GPIO_PIN_5
+
+#define USER_BTN_PORT          GPIOC
+#define USER_BTN_PIN           LL_GPIO_PIN_13
 
 void SysTick_Handler(void)
 {
@@ -56,6 +63,13 @@ void init_gpio() {
     LL_GPIO_SetPinOutputType(BLUE_LED_PORT, BLUE_LED_PIN, LL_GPIO_OUTPUT_PUSHPULL);
     LL_GPIO_SetPinOutputType(GREEN_LED_PORT, GREEN_LED_PIN, LL_GPIO_OUTPUT_PUSHPULL);
     LL_GPIO_SetPinOutputType(RED_LED_PORT, RED_LED_PIN, LL_GPIO_OUTPUT_PUSHPULL);
+
+    LL_GPIO_SetPinMode(USER_BTN_PORT, USER_BTN_PIN, LL_GPIO_MODE_INPUT);
+
+    LL_EXTI_EnableIT_0_31(LL_EXTI_LINE_0);
+    LL_EXTI_EnableEvent_0_31(LL_EXTI_LINE_0);
+    LL_EXTI_EnableRisingTrig_0_31(LL_EXTI_LINE_0);
+    LL_EXTI_EnableFallingTrig_0_31(LL_EXTI_LINE_0);
 }
 
 int main(void) {

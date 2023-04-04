@@ -1,16 +1,16 @@
 cmake_minimum_required(VERSION 3.16)
 
-set(CMAKE_TOOLCHAIN_FILE ${CMAKE_CURRENT_SOURCE_DIR}/../../stm32-cmake/cmake/stm32_gcc.cmake)
-set(STM32_CUBE_L4_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../../STM32CubeL4)
+set(CMAKE_TOOLCHAIN_FILE ${CMAKE_CURRENT_SOURCE_DIR}/../../../stm32-cmake/cmake/stm32_gcc.cmake)
+set(STM32_CUBE_L4_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../../../STM32CubeL4)
 
-project(ledblink C ASM)
+project(external_interrupt C ASM)
 set(CMAKE_INCLUDE_CURRENT_DIR TRUE)
 
 find_package(CMSIS COMPONENTS STM32L4 REQUIRED)
 find_package(HAL COMPONENTS STM32L4 LL_RCC LL_GPIO REQUIRED)
 
 # STM32F4-Discovery
-add_executable(${PROJECT_NAME} ledblink.c)
+add_executable(${PROJECT_NAME} external_interrupt.c)
 target_link_libraries(${PROJECT_NAME}
     HAL::STM32::L4::LL_RCC
     HAL::STM32::L4::LL_GPIO
