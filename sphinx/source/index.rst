@@ -20,6 +20,7 @@ The complete source code for the examples is available at: https://github.com/gb
    STM32 DMA <peripherals/stm32-dma.rst>
    STM32 ADC <peripherals/stm32-adc.rst>
    STM32 UART <peripherals/stm32-uart.rst>
+   STM32 UART with DMA <peripherals/stm32-uart-dma.rst>
    STM32 RTC <peripherals/stm32-rtc.rst>
    STM32 Low power <peripherals/stm32-low-power.rst>
    STM32 I2C <peripherals/stm32-i2c.rst>
