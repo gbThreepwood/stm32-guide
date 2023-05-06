@@ -7,3 +7,6 @@
 [submodule "PyCortexMDebug"]
 	path = PyCortexMDebug
 	url = git@github.com:bnahill/PyCortexMDebug.git
+[submodule "submodules/erpc"]
+	path = submodules/erpc
+	url = https://github.com/EmbeddedRPC/erpc.git
