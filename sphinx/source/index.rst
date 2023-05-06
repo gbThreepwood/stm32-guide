@@ -37,6 +37,13 @@ The complete source code for the examples is available at: https://github.com/gb
    Field oriented control <motor-control/field-oriented-control.rst>
    Direct torque control <motor-control/direct-torque-control.rst>
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Libraries
+
+   eRPC <libraries/erpc.rst>
+
+ 
 Indices and tables
 ==================
 
