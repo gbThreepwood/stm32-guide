@@ -30,6 +30,14 @@ The complete source code for the examples is available at: https://github.com/gb
 
 .. toctree::
    :maxdepth: 2
+   :caption: Core:
+
+   Cortex hardfault debug <core/cortex-hardfault-debug.rst>
+   STM32 Clock <core/stm32-clock.rst>
+
+
+.. toctree::
+   :maxdepth: 2
    :caption: Applications
 
    SinePWM <motor-control/sine-pwm.rst>
@@ -42,7 +50,9 @@ The complete source code for the examples is available at: https://github.com/gb
    :caption: Libraries
 
    eRPC <libraries/erpc.rst>
-
+   Protocol buffer <libraries/protocol-buffer.rst>
+   Telemetry <libraries/telemetry.rst>
+   QPC <libraries/qpc.rst>
  
 Indices and tables
 ==================
