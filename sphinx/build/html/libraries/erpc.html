@@ -1,0 +1,731 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>eRPC (Embedded RPC) &#8212; STM32 programming by examples 1.0 documentation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Protocol buffers" href="protocol-buffer.html" />
+    <link rel="prev" title="Direct torque control (DTC)" href="../motor-control/direct-torque-control.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">STM32 programming by examples 1.0 documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Peripherals:
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../peripherals/stm32-gpio.html">
+   STM32 GPIO
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../peripherals/stm32-timer.html">
+   STM32 Timer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../peripherals/stm32-dma.html">
+   STM32 DMA
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../peripherals/stm32-adc.html">
+   STM32 ADC
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../peripherals/stm32-uart.html">
+   STM32 UART
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../peripherals/stm32-uart-dma.html">
+   STM32 UART with DMA
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../peripherals/stm32-rtc.html">
+   STM32 RTC
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../peripherals/stm32-low-power.html">
+   STM32 Low power
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../peripherals/stm32-i2c.html">
+   STM32 I2C
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../peripherals/stm32-spi.html">
+   STM32 SPI
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../peripherals/stm32-advanced-timer.html">
+   STM32 Advanced timer
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Core:
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../core/cortex-hardfault-debug.html">
+   Cortex hardfault debug
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../core/stm32-clock.html">
+   STM32 Clock
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Applications
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../motor-control/sine-pwm.html">
+   SinePWM
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../motor-control/sv-pwm.html">
+   SV-PWM
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../motor-control/field-oriented-control.html">
+   Field oriented control
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../motor-control/direct-torque-control.html">
+   Direct torque control
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Libraries
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   eRPC
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="protocol-buffer.html">
+   Protocol buffer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="telemetry.html">
+   Telemetry
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="qpc.html">
+   QPC
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/libraries/erpc.rst.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#remote-control-a-led-from-python">
+   Remote control a LED from Python
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#server-program-for-the-microcontroller">
+     Server program for the microcontroller
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#uart-dma-configuration">
+     UART DMA configuration
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#uart-communication-interface">
+     UART communication interface
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#server-program-in-c">
+     Server program in C
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#client-program-in-python">
+     Client program in Python
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>eRPC (Embedded RPC)</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#remote-control-a-led-from-python">
+   Remote control a LED from Python
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#server-program-for-the-microcontroller">
+     Server program for the microcontroller
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#uart-dma-configuration">
+     UART DMA configuration
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#uart-communication-interface">
+     UART communication interface
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#server-program-in-c">
+     Server program in C
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#client-program-in-python">
+     Client program in Python
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="erpc-embedded-rpc">
+<h1>eRPC (Embedded RPC)<a class="headerlink" href="#erpc-embedded-rpc" title="Permalink to this headline">#</a></h1>
+<p>Embedded RPC (eRPC) is a remote procedure call library. The official repository is at: <a class="reference external" href="https://github.com/EmbeddedRPC/erpc">https://github.com/EmbeddedRPC/erpc</a></p>
+<section id="remote-control-a-led-from-python">
+<h2>Remote control a LED from Python<a class="headerlink" href="#remote-control-a-led-from-python" title="Permalink to this headline">#</a></h2>
+<p>In this example we will remotely control a LED on the STM32L476RG from a Python application.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Define</span> <span class="n">a</span> <span class="n">data</span> <span class="nb">type</span><span class="o">.</span>
+<span class="n">enum</span> <span class="n">LEDName</span> <span class="p">{</span> <span class="n">kRed</span><span class="p">,</span> <span class="n">kGreen</span><span class="p">,</span> <span class="n">kBlue</span> <span class="p">}</span>
+
+<span class="o">//</span> <span class="n">An</span> <span class="n">interface</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">logical</span> <span class="n">grouping</span> <span class="n">of</span> <span class="n">functions</span><span class="o">.</span>
+<span class="n">interface</span> <span class="n">LEDCONTROL</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">Simple</span> <span class="n">function</span> <span class="n">declaration</span> <span class="k">with</span> <span class="n">an</span> <span class="n">empty</span> <span class="n">reply</span><span class="o">.</span>
+    <span class="n">set_led</span><span class="p">(</span><span class="n">LEDName</span> <span class="n">whichLed</span><span class="p">,</span> <span class="nb">bool</span> <span class="n">onOrOff</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">void</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<section id="server-program-for-the-microcontroller">
+<h3>Server program for the microcontroller<a class="headerlink" href="#server-program-for-the-microcontroller" title="Permalink to this headline">#</a></h3>
+<p>Generate the C++ version of the IDL (Interface description language) based code:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">erpcgen -g c ledcontrol.erpc</span>
+</pre></div>
+</div>
+</section>
+<section id="uart-dma-configuration">
+<h3>UART DMA configuration<a class="headerlink" href="#uart-dma-configuration" title="Permalink to this headline">#</a></h3>
+<p>UART DMA configuration is described in a separate page on this website. We will use the example from that page as a basis for our low level UART interface.</p>
+</section>
+<section id="uart-communication-interface">
+<h3>UART communication interface<a class="headerlink" href="#uart-communication-interface" title="Permalink to this headline">#</a></h3>
+<p>We would not like to rely on any pre-made library UART communication driver, since that would mean that we have to give up any custom (e.g. ringbuffer DMA configuration) for UART communication. Instead we would like to add our own custom wrapper driver with callback functions which writes and reads the ringbuffers.</p>
+<p>The eRPC library comes with support for the official CMSIS UART driver. We will write a custom implementation of this driver. The CMSIS driver has a lot of features, but our custom driver will only implement the bare minimum required to make it work with eRPC.</p>
+<ul class="simple">
+<li><p>Initialization of the UART is performed outside of our custom driver and thus the init function does not hold any low level UART initialization code. The init function does however register a callback to allow the UART driver to notify eRPC when a transfer (RX or TX) is complete. The driver needs to invoke this callback from ISR context, since eRPC uses a blocking wait for transfer to be complete.</p></li>
+</ul>
+</section>
+<section id="server-program-in-c">
+<h3>Server program in C<a class="headerlink" href="#server-program-in-c" title="Permalink to this headline">#</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * @file main.c</span>
+<span class="cm"> * @author Eirik Haustveit (eirik@haustveit.net)</span>
+<span class="cm"> * @brief eRPC demo</span>
+<span class="cm"> * @version 0.1</span>
+<span class="cm"> * @date 2023-05-07</span>
+<span class="cm"> * </span>
+<span class="cm"> * @copyright Copyright (c) 2023</span>
+<span class="cm"> * </span>
+<span class="cm"> * Remote control a LED using the eRPC library </span>
+<span class="cm"> * </span>
+<span class="cm"> * </span>
+<span class="cm"> */</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stm32l4xx_ll_gpio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stm32l4xx_ll_adc.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stm32l4xx_ll_usart.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stm32l4xx_ll_utils.h&gt;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stm32l4xx_ll_cortex.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stm32l4xx_ll_rcc.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;stm32l4xx_ll_bus.h&quot;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;erpc_server_setup.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;erpc_transport_setup.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ledcontrol.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ledcontrol_server.h&quot;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;erpc_setup_uart_custom.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;usart_driver.h&quot;</span>
+
+<span class="k">volatile</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="cp">#define BLUE_LED_PORT          GPIOA</span>
+<span class="cp">#define BLUE_LED_PIN           LL_GPIO_PIN_9</span>
+
+<span class="cp">#define UART2_PORT             GPIOA</span>
+<span class="cp">#define UART2_TX_PIN           LL_GPIO_PIN_2</span>
+<span class="cp">#define UART2_RX_PIN           LL_GPIO_PIN_3</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">SysTick_Handler</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">uint_fast32_t</span><span class="w"> </span><span class="n">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">counter</span><span class="o">++</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// 1 Hz blinking</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">counter</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">500</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="n">LL_GPIO_TogglePin</span><span class="p">(</span><span class="n">BLUE_LED_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">BLUE_LED_PIN</span><span class="p">);</span>
+
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Initialize GPIO</span>
+<span class="cm"> * </span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">init_gpio</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="n">LL_AHB2_GRP1_EnableClock</span><span class="p">(</span><span class="n">LL_AHB2_GRP1_PERIPH_GPIOA</span><span class="p">);</span>
+<span class="w">    </span><span class="n">LL_GPIO_SetPinMode</span><span class="p">(</span><span class="n">BLUE_LED_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">BLUE_LED_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">LL_GPIO_MODE_OUTPUT</span><span class="p">);</span>
+<span class="w">    </span><span class="n">LL_GPIO_SetPinOutputType</span><span class="p">(</span><span class="n">BLUE_LED_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">BLUE_LED_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">LL_GPIO_OUTPUT_PUSHPULL</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief Initialize UART</span>
+<span class="cm"> * </span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">init_uart</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// From the Nucleo manual:</span>
+<span class="w">    </span><span class="c1">// By default, the USART2 communication between the target STM32 and ST-LINK MCU is enabled.</span>
+<span class="w">    </span><span class="c1">// PA2 for TX and PA3 for RX</span>
+
+<span class="w">    </span><span class="n">LL_AHB2_GRP1_EnableClock</span><span class="p">(</span><span class="n">LL_AHB2_GRP1_PERIPH_GPIOA</span><span class="p">);</span>
+<span class="w">    </span><span class="n">LL_GPIO_SetPinMode</span><span class="p">(</span><span class="n">UART2_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">UART2_TX_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">LL_GPIO_MODE_ALTERNATE</span><span class="p">);</span>
+<span class="w">    </span><span class="n">LL_GPIO_SetPinMode</span><span class="p">(</span><span class="n">UART2_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">UART2_RX_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">LL_GPIO_MODE_ALTERNATE</span><span class="p">);</span>
+<span class="w">    </span><span class="n">LL_GPIO_SetAFPin_0_7</span><span class="p">(</span><span class="n">UART2_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">UART2_TX_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">LL_GPIO_AF_7</span><span class="p">);</span>
+<span class="w">    </span><span class="n">LL_GPIO_SetAFPin_0_7</span><span class="p">(</span><span class="n">UART2_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">UART2_RX_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">LL_GPIO_AF_7</span><span class="p">);</span>
+
+
+<span class="w">    </span><span class="n">LL_APB1_GRP1_EnableClock</span><span class="p">(</span><span class="n">LL_APB1_GRP1_PERIPH_USART2</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">LL_RCC_SetUSARTClockSource</span><span class="p">(</span><span class="n">LL_RCC_USART2_CLKSOURCE_PCLK1</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">LL_USART_SetOverSampling</span><span class="p">(</span><span class="n">USART2</span><span class="p">,</span><span class="w"> </span><span class="n">LL_USART_OVERSAMPLING_8</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">LL_USART_SetBaudRate</span><span class="p">(</span><span class="n">USART2</span><span class="p">,</span><span class="w"> </span><span class="n">SystemCoreClock</span><span class="p">,</span><span class="w"> </span><span class="n">LL_USART_OVERSAMPLING_8</span><span class="p">,</span><span class="w"> </span><span class="mi">9600</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">LL_USART_EnableDirectionRx</span><span class="p">(</span><span class="n">USART2</span><span class="p">);</span>
+<span class="w">    </span><span class="n">LL_USART_EnableDirectionTx</span><span class="p">(</span><span class="n">USART2</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">LL_USART_Enable</span><span class="p">(</span><span class="n">USART2</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">print_str</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">str</span><span class="p">){</span>
+<span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="o">*</span><span class="n">str</span><span class="p">){</span>
+<span class="w">        </span><span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">LL_USART_IsActiveFlag_TC</span><span class="p">(</span><span class="n">USART2</span><span class="p">));</span>
+<span class="w">        </span><span class="n">LL_USART_TransmitData8</span><span class="p">(</span><span class="n">USART2</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">str</span><span class="o">++</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">set_led</span><span class="p">(</span><span class="n">LEDName</span><span class="w"> </span><span class="n">whichled</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">onOrOff</span><span class="p">){</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">led_control_fp</span><span class="p">)(</span><span class="n">GPIO_TypeDef</span><span class="w"> </span><span class="o">*</span><span class="n">GPIOx</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">PinMask</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">onOrOff</span><span class="p">){</span>
+<span class="w">        </span><span class="n">led_control_fp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LL_GPIO_SetOutputPin</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span><span class="p">{</span>
+<span class="w">        </span><span class="n">led_control_fp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LL_GPIO_ResetOutputPin</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">switch</span><span class="p">(</span><span class="n">whichled</span><span class="p">){</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">kRed</span><span class="p">:</span>
+<span class="w">            </span><span class="n">led_control_fp</span><span class="p">(</span><span class="n">BLUE_LED_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">BLUE_LED_PIN</span><span class="p">);</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">kGreen</span><span class="p">:</span>
+<span class="w">            </span><span class="n">led_control_fp</span><span class="p">(</span><span class="n">BLUE_LED_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">BLUE_LED_PIN</span><span class="p">);</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">kBlue</span><span class="p">:</span>
+<span class="w">            </span><span class="n">led_control_fp</span><span class="p">(</span><span class="n">BLUE_LED_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">BLUE_LED_PIN</span><span class="p">);</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="n">init_gpio</span><span class="p">();</span>
+<span class="w">    </span><span class="n">init_uart</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">print_str</span><span class="p">(</span><span class="s">&quot;eRPC demo.</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 1kHz ticks</span>
+<span class="w">    </span><span class="n">SystemCoreClockUpdate</span><span class="p">();</span>
+<span class="w">    </span><span class="n">SysTick_Config</span><span class="p">(</span><span class="n">SystemCoreClock</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">//CUSTOM_DRIVER_USART usart_driver;</span>
+<span class="w">    </span><span class="c1">//erpc_transport_t transport = erpc_transport_custom_uart_init((void*)&amp;usart_driver);</span>
+
+<span class="w">    </span><span class="n">erpc_transport_t</span><span class="w"> </span><span class="n">transport</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">erpc_transport_cmsis_uart_init</span><span class="p">((</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">usart_driver</span><span class="p">);</span>
+
+<span class="w">    </span><span class="cm">/*</span>
+<span class="cm">     * Use a statically allocated buffer</span>
+<span class="cm">     * (dynamic allocation is usually a bad idea on embedded platforms)</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="n">erpc_mbf_t</span><span class="w"> </span><span class="n">mbf</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">erpc_mbf_static_init</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">//erpc_mbf_t mbf =  erpc_mbf_dynamic_init();</span>
+
+<span class="w">    </span><span class="n">erpc_server_t</span><span class="w"> </span><span class="n">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">erpc_server_init</span><span class="p">(</span><span class="n">transport</span><span class="p">,</span><span class="w"> </span><span class="n">mbf</span><span class="p">);</span><span class="w">    </span>
+
+<span class="w">    </span><span class="n">erpc_service_t</span><span class="w"> </span><span class="n">service</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">create_LEDCONTROL_service</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">erpc_add_service_to_server</span><span class="p">(</span><span class="n">server</span><span class="p">,</span><span class="w"> </span><span class="n">service</span><span class="p">);</span>
+
+
+<span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="c1">//erpc_server_run();</span>
+<span class="w">        </span><span class="cm">/* </span>
+<span class="cm">         * The erpc run method is blocking, if your mcu has other responsibilities except running eRPC commands</span>
+<span class="cm">         * it is probably better to use poll in a thread or at a convenient place in your code.</span>
+<span class="cm">         */</span>
+<span class="w">        </span><span class="n">erpc_server_poll</span><span class="p">(</span><span class="n">server</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">LL_mDelay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="client-program-in-python">
+<h3>Client program in Python<a class="headerlink" href="#client-program-in-python" title="Permalink to this headline">#</a></h3>
+<p>The Python program will use a simple Tkinter GUI with a push button to toggle the LED. Feedback about the actual LED status will also be provided.</p>
+<p>Generate the Python version of the IDL (Interface description language) based code:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">erpcgen -g py ledcontrol.erpc</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">erpc</span>
+<span class="kn">import</span> <span class="nn">ledcontrol</span>
+
+<span class="c1">## Run client on specified transport layer</span>
+<span class="k">def</span> <span class="nf">runClient</span><span class="p">(</span><span class="n">transport</span><span class="p">):</span>
+    <span class="n">clientManager</span> <span class="o">=</span> <span class="n">erpc</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">ClientManager</span><span class="p">(</span><span class="n">transport</span><span class="p">,</span> <span class="n">erpc</span><span class="o">.</span><span class="n">basic_codec</span><span class="o">.</span><span class="n">BasicCodec</span><span class="p">)</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">ledcontrol</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">LEDCONTROLClient</span><span class="p">(</span><span class="n">clientManager</span><span class="p">)</span>
+
+    <span class="c1"># send request to the server</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">set_led</span><span class="p">(</span><span class="n">ledcontrol</span><span class="o">.</span><span class="n">common</span><span class="o">.</span><span class="n">LEDName</span><span class="o">.</span><span class="n">kBlue</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span> 
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\r\n</span><span class="s1">eRPC request is sent to the server&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;eRPC LED control example&#39;</span><span class="p">)</span>
+    
+    <span class="n">transport</span> <span class="o">=</span> <span class="n">erpc</span><span class="o">.</span><span class="n">transport</span><span class="o">.</span><span class="n">SerialTransport</span><span class="p">(</span><span class="s2">&quot;/dev/pts/2&quot;</span><span class="p">,</span> <span class="mi">115200</span><span class="p">)</span>
+    <span class="n">runClient</span><span class="p">(</span><span class="n">transport</span><span class="p">)</span> 
+    
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../motor-control/direct-torque-control.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Direct torque control (DTC)</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="protocol-buffer.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Protocol buffers</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Eirik Haustveit<br/>
+  
+      &copy; Copyright 2023, Eirik Haustveit.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
