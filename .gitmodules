@@ -10,3 +10,6 @@
 [submodule "submodules/erpc"]
 	path = submodules/erpc
 	url = https://github.com/EmbeddedRPC/erpc.git
+[submodule "submodules/fatfs"]
+	path = submodules/fatfs/fatfs
+	url = git@github.com:abbrev/fatfs.git
