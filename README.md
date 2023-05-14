@@ -2,6 +2,13 @@
 
 Guide on how to develop for the STM32 series of microcontrollers, with emphasis on not using the official development tools.
 
+## Getting started
+
+The repository relies on some sub-modules, so after cloning you should also run:
+`git submodule update --init --recursive`
+
+## Motivation
+
 The STM32CubeIDE is not that great in my opinion, altough the graphical pin configration tool is nice in some situations. Furthermore
 the tool is specific for STM32, and it is not fun having to switch tool when swiching between differen microcontroller vendors.
 
