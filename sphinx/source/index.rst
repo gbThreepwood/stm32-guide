@@ -19,6 +19,7 @@ The complete source code for the examples is available at: https://github.com/gb
    STM32 Timer <peripherals/stm32-timer.rst>
    STM32 DMA <peripherals/stm32-dma.rst>
    STM32 ADC <peripherals/stm32-adc.rst>
+   STM32 DAC <peripherals/stm32-dac.rst>
    STM32 UART <peripherals/stm32-uart.rst>
    STM32 UART with DMA <peripherals/stm32-uart-dma.rst>
    STM32 RTC <peripherals/stm32-rtc.rst>
@@ -53,6 +54,7 @@ The complete source code for the examples is available at: https://github.com/gb
    Protocol buffer <libraries/protocol-buffer.rst>
    Telemetry <libraries/telemetry.rst>
    QPC <libraries/qpc.rst>
+   FatFS <libraries/fatfs.rst>
  
 Indices and tables
 ==================
