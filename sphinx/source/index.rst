@@ -55,6 +55,7 @@ The complete source code for the examples is available at: https://github.com/gb
    Telemetry <libraries/telemetry.rst>
    QPC <libraries/qpc.rst>
    FatFS <libraries/fatfs.rst>
+   TinyUSB <libraries/tinyusb.rst>
  
 Indices and tables
 ==================
