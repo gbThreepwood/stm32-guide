@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.s": "arm",
+        "stm32l4xx_ll_gpio.h": "c"
+    }
+}
