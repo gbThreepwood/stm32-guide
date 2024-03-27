@@ -4,21 +4,27 @@
  * @brief ADC demo
  * @version 0.1
  * @date 2023-01-30
- * 
+ *
  * @copyright Copyright (c) 2023
- * 
+ *
  * Reads some analog inputs on the Nucleo-L476RG
- * 
+ *
  * The purpose of this example is only to demonstrate the very basics of how to read a sequence of
  * inputs from the ADC.
  * However in order to properly demonstrate this, the UART is used to send the converted data back
  * to the developers computer.
- * 
+ *
  * We read some external input pins, as well as some internal channels for temperature sensor, battery voltage
  * and reference voltage.
- * 
- * 
- * 
+ *
+ * Reference voltage:
+ * The ADC voltage range is from zero to Vref+. On the STM32L476RG in LQFP64 package the VDDA/VREF+ is wired to
+ * pin 13. On the Nucleo board there is a solder bridge which you can use to connect the VREF+ to VDD, if it is
+ * not connected you MUST provide the reference voltage externally.
+ *
+ * Calibration:
+ * is necessary for accurate conversion.
+ *
  */
 #include <stm32l4xx_ll_gpio.h>
 #include <stm32l4xx_ll_adc.h>
@@ -29,14 +35,24 @@
 #include <stm32l4xx_ll_rcc.h>
 #include "stm32l4xx_ll_bus.h"
 
+// Enable this define to enable reading of the internal sensors
+// connected to the ADC.
+#define INTERNAL_SENSE_EXAMPLE
+
 volatile uint32_t counter = 0;
 
 #define BLUE_LED_PORT          GPIOA
 #define BLUE_LED_PIN           LL_GPIO_PIN_9
 
+#define ONBOARD_LED_PORT GPIOA
+#define ONBOARD_LED_PIN LL_GPIO_PIN_5
+
 #define UART2_PORT             GPIOA
 #define UART2_TX_PIN           LL_GPIO_PIN_2
 #define UART2_RX_PIN           LL_GPIO_PIN_3
+
+void calibrate_adc();
+
 
 void SysTick_Handler(void)
 {
@@ -44,25 +60,29 @@ void SysTick_Handler(void)
     counter++;
 
     // 1 Hz blinking
-    if ((counter % 500) == 0)
-        LL_GPIO_TogglePin(BLUE_LED_PORT, BLUE_LED_PIN);
+    if ((counter % 1500) == 0)
+        LL_GPIO_TogglePin(ONBOARD_LED_PORT, ONBOARD_LED_PIN);
+        //LL_GPIO_TogglePin(BLUE_LED_PORT, BLUE_LED_PIN);
 
 }
 
 /**
  * @brief Initialize GPIO
- * 
+ *
  */
 void init_gpio() {
 
     LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOA);
     LL_GPIO_SetPinMode(BLUE_LED_PORT, BLUE_LED_PIN, LL_GPIO_MODE_OUTPUT);
     LL_GPIO_SetPinOutputType(BLUE_LED_PORT, BLUE_LED_PIN, LL_GPIO_OUTPUT_PUSHPULL);
+
+    LL_GPIO_SetPinMode(ONBOARD_LED_PORT, ONBOARD_LED_PIN, LL_GPIO_MODE_OUTPUT);
+    LL_GPIO_SetPinOutputType(ONBOARD_LED_PORT, ONBOARD_LED_PIN, LL_GPIO_OUTPUT_PUSHPULL);
 }
 
 /**
  * @brief Initialize UART
- * 
+ *
  */
 void init_uart() {
     // From the Nucleo manual:
@@ -82,7 +102,7 @@ void init_uart() {
 
     LL_USART_SetOverSampling(USART2, LL_USART_OVERSAMPLING_8);
 
-    LL_USART_SetBaudRate(USART2, SystemCoreClock, LL_USART_OVERSAMPLING_8, 9600);
+    LL_USART_SetBaudRate(USART2, SystemCoreClock, LL_USART_OVERSAMPLING_8, 115200);
 
     LL_USART_EnableDirectionRx(USART2);
     LL_USART_EnableDirectionTx(USART2);
@@ -92,7 +112,7 @@ void init_uart() {
 
 /**
  * @brief Init ADC
- * 
+ *
  */
 void init_adc() {
 
@@ -103,36 +123,32 @@ void init_adc() {
     // must be triggered by software, or some external event.
     // Injected conversion has higher priority than regular and
     // is useful for e.g. motor control, where it allows
-    // us to start conversion of the current measurements 
-    // on specific favorable time instanst of the
+    // us to start conversion of the current measurements
+    // on specific favorable time instants of the
     // transistor switching cycle.
 
     LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOA);
     LL_GPIO_SetPinMode(GPIOA, LL_GPIO_PIN_0, LL_GPIO_MODE_ANALOG);
+    LL_GPIO_EnablePinAnalogControl(GPIOA, LL_GPIO_PIN_0);
+    LL_GPIO_SetPinPull(GPIOA, LL_GPIO_PIN_0, LL_GPIO_PULL_NO);
+
+    NVIC_SetPriority(ADC1_2_IRQn, 0);
+    NVIC_EnableIRQ(ADC1_2_IRQn);
 
     /**
      * Configure the ADC clock
-     * 
+     *
      */
     LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_ADC);
+
+    LL_ADC_SetCommonClock(__LL_ADC_COMMON_INSTANCE(ADC1), LL_ADC_CLOCK_SYNC_PCLK_DIV4);
 
     LL_RCC_SetADCClockSource(LL_RCC_ADC_CLKSOURCE_SYSCLK);
 
 
-    /**
-     * @brief Software procedure to enable the ADC
-     * 
-     * From the reference manual for STM32l4, page 519.
-     * 
-     */
-    LL_ADC_DisableDeepPowerDown(ADC1);
-
-    LL_ADC_EnableInternalRegulator(ADC1);
-
     //LL_ADC_Disable(ADC1);
     while(__LL_ADC_IS_ENABLED_ALL_COMMON_INSTANCE()); // Block here if ADC is enabled (it should not be)
 
-    LL_ADC_SetCommonClock(__LL_ADC_COMMON_INSTANCE(ADC1), LL_ADC_CLOCK_SYNC_PCLK_DIV4);
 
     LL_ADC_SetResolution(ADC1, LL_ADC_RESOLUTION_12B);
     LL_ADC_SetDataAlignment(ADC1, LL_ADC_DATA_ALIGN_RIGHT);
@@ -140,23 +156,26 @@ void init_adc() {
 
     //LL_ADC_AWD_CH_VREFINT_REG
 
-    //LL_ADC_CommonInitTypeDef ADC_CommonInitStruct = {0}; 
+    //LL_ADC_CommonInitTypeDef ADC_CommonInitStruct = {0};
     //LL_ADC_InitTypeDef ADC_InitStruct = {0};
     //LL_ADC_REG_InitTypeDef ADC_REG_InitStruct = {0};
 
     /**
-     * @brief 
+     * @brief
      *
-     * Scan mode can only be used with DMA. 
+     * Scan mode can only be used with DMA.
      */
     // Sequencer disabled is equivalent to sequencer of 1 rank, ADC conversion on only 1 channel.
-    //LL_ADC_REG_SetSequencerLength(ADC1, LL_ADC_REG_SEQ_SCAN_DISABLE); 
+    #ifdef INTERNAL_SENSE_EXAMPLE
     LL_ADC_REG_SetSequencerLength(ADC1, LL_ADC_REG_SEQ_SCAN_ENABLE_4RANKS);
+    #else
+    LL_ADC_REG_SetSequencerLength(ADC1, LL_ADC_REG_SEQ_SCAN_DISABLE);
+    #endif
 
     /**
-     * @brief 
+     * @brief
      *
-     * The sequencer discont mode can not be used with continous mode 
+     * The sequencer discont mode can not be used with continous mode
      */
     LL_ADC_REG_SetSequencerDiscont(ADC1, LL_ADC_REG_SEQ_DISCONT_1RANK);
 
@@ -177,34 +196,62 @@ void init_adc() {
     //LL_ADC_SetCommonPathInternalCh(__LL_ADC_COMMON_INSTANCE(ADC1), LL_ADC_PATH_INTERNAL_TEMPSENSOR);
     //LL_ADC_SetCommonPathInternalCh(__LL_ADC_COMMON_INSTANCE(ADC1), LL_ADC_PATH_INTERNAL_VBAT);
     //LL_ADC_SetCommonPathInternalCh(__LL_ADC_COMMON_INSTANCE(ADC1), LL_ADC_PATH_INTERNAL_VREFINT);
+
+    #ifdef INTERNAL_SENSE_EXAMPLE
     LL_ADC_SetCommonPathInternalCh(__LL_ADC_COMMON_INSTANCE(ADC1), LL_ADC_PATH_INTERNAL_TEMPSENSOR | LL_ADC_PATH_INTERNAL_VREFINT | LL_ADC_PATH_INTERNAL_VBAT);
+    #endif
 
     LL_ADC_REG_SetSequencerRanks(ADC1, LL_ADC_REG_RANK_1, LL_ADC_CHANNEL_5);
     //LL_ADC_REG_SetSequencerRanks(ADC1, LL_ADC_REG_RANK_2, LL_ADC_CHANNEL_6);
+
+    #ifdef INTERNAL_SENSE_EXAMPLE
     LL_ADC_REG_SetSequencerRanks(ADC1, LL_ADC_REG_RANK_2 , LL_ADC_CHANNEL_TEMPSENSOR);
     LL_ADC_REG_SetSequencerRanks(ADC1, LL_ADC_REG_RANK_3 , LL_ADC_CHANNEL_VBAT);
     LL_ADC_REG_SetSequencerRanks(ADC1, LL_ADC_REG_RANK_4 , LL_ADC_CHANNEL_VREFINT);
+    #endif
 
-    LL_ADC_SetChannelSamplingTime(ADC1, LL_ADC_CHANNEL_5, LL_ADC_SAMPLINGTIME_24CYCLES_5);
+    LL_ADC_SetChannelSamplingTime(ADC1, LL_ADC_CHANNEL_5, LL_ADC_SAMPLINGTIME_47CYCLES_5);
+
+
+    #ifdef INTERNAL_SENSE_EXAMPLE
     LL_ADC_SetChannelSamplingTime(ADC1, LL_ADC_CHANNEL_TEMPSENSOR, LL_ADC_SAMPLINGTIME_24CYCLES_5);
     LL_ADC_SetChannelSamplingTime(ADC1, LL_ADC_CHANNEL_VBAT, LL_ADC_SAMPLINGTIME_24CYCLES_5);
     LL_ADC_SetChannelSamplingTime(ADC1, LL_ADC_CHANNEL_VREFINT, LL_ADC_SAMPLINGTIME_24CYCLES_5);
+    #endif
 
     LL_ADC_SetChannelSingleDiff(ADC1, LL_ADC_CHANNEL_5, LL_ADC_SINGLE_ENDED);
+
+    #ifdef INTERNAL_SENSE_EXAMPLE
     LL_ADC_SetChannelSingleDiff(ADC1, LL_ADC_CHANNEL_TEMPSENSOR, LL_ADC_SINGLE_ENDED);
     LL_ADC_SetChannelSingleDiff(ADC1, LL_ADC_CHANNEL_VBAT, LL_ADC_SINGLE_ENDED);
     LL_ADC_SetChannelSingleDiff(ADC1, LL_ADC_CHANNEL_VREFINT, LL_ADC_SINGLE_ENDED);
+    #endif
 
+
+    /**
+     * @brief Software procedure to enable the ADC
+     *
+     * From the reference manual for STM32l4, page 519.
+     *
+     */
+    LL_ADC_DisableDeepPowerDown(ADC1);
+
+    LL_ADC_EnableInternalRegulator(ADC1);
+
+    calibrate_adc();
 
     LL_ADC_Enable(ADC1);
     while (LL_ADC_IsActiveFlag_ADRDY(ADC1) == 0){}
 
-    LL_ADC_REG_StartConversion(ADC1);
+    //LL_ADC_REG_StartConversion(ADC1);
+
+
+
 }
 
 /**
  * @brief Calibrate ADC in order to improve accuracy
- * 
+ *
  */
 void calibrate_adc() {
 
@@ -213,17 +260,17 @@ void calibrate_adc() {
 }
 
 /**
- * @brief 
- * 
+ * @brief
+ *
  * Convert int to string representation in decimal number system
  * The caller should provide a pointer to the end of a buffer with
  * a size of at least 3*sizeof(selected int size) + 1 to always be on the safe side
- * 
+ *
  * 2^32 = 4294967296
- * 
- * @param x 
- * @param s 
- * @return char* 
+ *
+ * @param x
+ * @param s
+ * @return char*
  */
 char *intToStrDec(uint32_t x, char *s)
 {
@@ -261,7 +308,9 @@ int main(void) {
     init_uart();
 
     print_str("ADC read demo\r\n");
+
     init_adc();
+
     print_str("ADC initialization complete.\r\n");
 
     // 1kHz ticks
@@ -272,6 +321,7 @@ int main(void) {
     print_uint32(SystemCoreClock);
     print_str("\r\n");
 
+
     while(1) {
 
         LL_ADC_REG_StartConversion(ADC1);
@@ -280,11 +330,13 @@ int main(void) {
 
         print_str("Data: ");
         print_uint32(data);
-        print_str("\r\n");
+        print_str("\t\t");
+
+        #ifdef INTERNAL_SENSE_EXAMPLE
         switch(seq_ctr){
             case 0:{
                 uint32_t volt = __LL_ADC_CALC_DATA_TO_VOLTAGE(3300UL, data, LL_ADC_RESOLUTION_12B);
- 
+
                 print_str("Volt: ");
                 print_uint32(volt);
                 print_str(" mV");
@@ -299,7 +351,7 @@ int main(void) {
             break;
             case 2:{
                 uint32_t volt = __LL_ADC_CALC_DATA_TO_VOLTAGE(3300UL, data, LL_ADC_RESOLUTION_12B);
-  
+
                 print_str("Batvolt: ");
                 print_uint32(volt);
                 print_str(" mV");
@@ -307,7 +359,7 @@ int main(void) {
             }
             case 3:{
                 uint32_t vref = __LL_ADC_CALC_VREFANALOG_VOLTAGE(data, LL_ADC_RESOLUTION_12B);
- 
+
                 print_str("Refvolt: ");
                 print_uint32(vref);
                 print_str(" mV");
@@ -315,7 +367,7 @@ int main(void) {
             }
             default:
         }
-
+        #endif
 
         seq_ctr++;
         if(seq_ctr > 3)
@@ -323,9 +375,22 @@ int main(void) {
 
         print_str("\r\n");
 
-        //LL_ADC_REG_StartConversion(ADC1);
         LL_mDelay(1000);
     }
 
     return 0;
+}
+
+
+// TODO: These are here to get rid of some warnings, but I should find a better way to remove the warnings
+void _close(void){
+}
+
+void _lseek(void){
+}
+
+void _read(void){
+}
+
+void _write(void){
 }
