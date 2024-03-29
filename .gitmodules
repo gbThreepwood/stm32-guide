@@ -13,3 +13,12 @@
 [submodule "submodules/fatfs"]
 	path = submodules/fatfs/fatfs
 	url = git@github.com:abbrev/fatfs.git
+[submodule "examples/applications/pid_control/lib/libprintf/printf"]
+	path = examples/applications/pid_control/lib/libprintf/printf
+	url = git@github.com:mpaland/printf.git
+[submodule "examples/applications/pid_control/lib/lwrb"]
+	path = examples/applications/pid_control/lib/lwrb
+	url = git@github.com:MaJerle/lwrb.git
+[submodule "examples/applications/pid_control/lib/qp/qpc"]
+	path = examples/applications/pid_control/lib/qp/qpc
+	url = git@github.com:QuantumLeaps/qpc.git
