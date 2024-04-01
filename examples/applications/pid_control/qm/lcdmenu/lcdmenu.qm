@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model version="6.1.1" links="0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.state-machine.com/qm/qm.xsd">
+ <framework name="qpc"/>
+ <package name="package" stereotype="0x00">
+  <class name="Class" superclass="qpc::QActive">
+   <statechart properties="0x00">
+    <initial target="../1">
+     <initial_glyph conn="23,6,5,0,35,6">
+      <action box="0,-2,10,2"/>
+     </initial_glyph>
+    </initial>
+    <state name="Init 4-bit mode">
+     <documentation>Initialize the LCD in 4-bit mode</documentation>
+     <tran trig="TRIG" target="../../2">
+      <tran_glyph conn="26,32,3,1,86,23,-6">
+       <action box="0,-2,10,2"/>
+      </tran_glyph>
+     </tran>
+     <state_glyph node="26,12,59,26"/>
+    </state>
+    <state name="Ready">
+     <state name="Set data">
+      <tran trig="TRIG" target="../../1">
+       <tran_glyph conn="35,69,3,3,38">
+        <action box="0,-2,10,2"/>
+       </tran_glyph>
+      </tran>
+      <state_glyph node="35,61,26,16"/>
+     </state>
+     <state name="Clock data">
+      <documentation>Set E high and wait and then low and wait</documentation>
+      <tran trig="TRIG" target="../../2">
+       <tran_glyph conn="73,72,3,1,29,-22,-9">
+        <action box="0,-2,10,2"/>
+       </tran_glyph>
+      </tran>
+      <state_glyph node="73,61,26,16"/>
+     </state>
+     <state name="Await">
+      <tran trig="TRIG" target="../../0">
+       <tran_glyph conn="35,51,3,0,13,10">
+        <action box="0,-2,10,2"/>
+       </tran_glyph>
+      </tran>
+      <state_glyph node="35,46,58,8"/>
+     </state>
+     <state_glyph node="26,41,80,39"/>
+    </state>
+    <state_diagram size="138,89"/>
+   </statechart>
+  </class>
+ </package>
+</model>

@@ -11,5 +11,12 @@
 
 void bsp_init_gpio();
 
-#endif /* _BSP_GPIO_H */
+void bsp_lcd_set_gpio_pins(uint8_t data, bool rs, bool rw);
 
+void bsp_lcd_set_en_pin(bool en);
+
+void bsp_green_led_toggle();
+void bsp_green_led_on();
+void bsp_green_led_off();
+
+#endif /* _BSP_GPIO_H */

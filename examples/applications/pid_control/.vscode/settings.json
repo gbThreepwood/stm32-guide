@@ -4,6 +4,10 @@
         "stm32l4xx_ll_adc.h": "c",
         "stm32l4xx_ll_rcc.h": "c",
         "stdio.h": "c",
-        "bsp_timer.h": "c"
+        "bsp_timer.h": "c",
+        "libhd44780.h": "c",
+        "cstdint": "c",
+        "stm32l4xx_ll_dma.h": "c",
+        "bsp_gpio.h": "c"
     }
 }

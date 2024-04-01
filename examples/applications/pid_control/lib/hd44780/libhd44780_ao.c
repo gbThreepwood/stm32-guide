@@ -4,17 +4,6 @@ static void TM_HD44780_Cmd4bit(uint8_t cmd);
 static void TM_HD44780_InitPins(void);
 
 static void
-TM_HD44780_Cmd4bit(uint8_t cmd) {
-    /* Set output port */
-    TM_GPIO_SetPinValue(HD44780_D7_PORT, HD44780_D7_PIN, (cmd & 0x08));
-    TM_GPIO_SetPinValue(HD44780_D6_PORT, HD44780_D6_PIN, (cmd & 0x04));
-    TM_GPIO_SetPinValue(HD44780_D5_PORT, HD44780_D5_PIN, (cmd & 0x02));
-    TM_GPIO_SetPinValue(HD44780_D4_PORT, HD44780_D4_PIN, (cmd & 0x01));
-    HD44780_E_BLINK;
-}
-
-
-static void
 TM_HD44780_InitPins(void) {
     /* Init all pins */
     TM_GPIO_Init(HD44780_RS_PORT, HD44780_RS_PIN, TM_GPIO_Mode_OUT, TM_GPIO_OType_PP, TM_GPIO_PuPd_NOPULL, TM_GPIO_Speed_Low);

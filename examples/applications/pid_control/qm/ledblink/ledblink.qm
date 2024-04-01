@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model version="6.1.1" links="0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.state-machine.com/qm/qm.xsd">
+ <framework name="qpc"/>
+ <package name="AOs" stereotype="0x00">
+  <class name="LEDblink" superclass="qpc::QActive">
+   <attribute name="timeEvt" type="QTimeEvt" visibility="0x00" properties="0x00"/>
+   <statechart properties="0x00">
+    <initial target="../1">
+     <initial_glyph conn="24,3,5,0,32,7">
+      <action box="0,-2,10,2"/>
+     </initial_glyph>
+    </initial>
+    <state name="LEDon">
+     <entry>bsp_green_led_on();
+QTimeEvt_armX(&amp;me-&gt;timeEvt, 1500, 0);</entry>
+     <tran trig="LEDBLINK_TIMEOUT" target="../../2">
+      <tran_glyph conn="32,24,3,1,52,14,-4">
+       <action box="0,-2,19,2"/>
+      </tran_glyph>
+     </tran>
+     <state_glyph node="32,10,48,18">
+      <entry box="1,2,6,2"/>
+     </state_glyph>
+    </state>
+    <state name="LEDoff">
+     <entry>bsp_green_led_off();
+QTimeEvt_armX(&amp;me-&gt;timeEvt, 100, 0);</entry>
+     <tran trig="LEDBLINK_TIMEOUT" target="../../1">
+      <tran_glyph conn="32,46,3,1,56,-30,-8">
+       <action box="0,-2,17,2"/>
+      </tran_glyph>
+     </tran>
+     <state_glyph node="32,32,48,18">
+      <entry box="1,2,6,2"/>
+     </state_glyph>
+    </state>
+    <state_diagram size="130,84"/>
+   </statechart>
+  </class>
+ </package>
+ <directory name="../../src/active_objects">
+  <file name="ledblink.c">
+   <text>
+#include &quot;qpc.h&quot;
+
+#include &quot;bsp.h&quot;
+#include &quot;bsp_gpio.h&quot;
+
+/*============== ask QM to declare the buzzer class ================*/
+$declare${AOs::LEDblink}
+
+static LEDblink l_ledblink;
+QActive * const LEDblink_AO = &amp;l_ledblink.super;
+
+void LEDblink_ctor(void) {
+    LEDblink *me = (LEDblink *)LEDblink_AO;
+    QActive_ctor(&amp;me-&gt;super, Q_STATE_CAST(&amp;LEDblink_initial));
+
+    QTimeEvt_ctorX(&amp;me-&gt;timeEvt, &amp;me-&gt;super, LEDBLINK_TIMEOUT_SIG, 0U);
+}
+
+/*============== ask QM to define the buzzer class ================*/
+$define${AOs::LEDblink}
+</text>
+  </file>
+  <file name="ledblink.h">
+   <text>#ifndef LEDBLINK_AO_H
+#define LEDBLINK_AO_H
+
+#include &quot;qpc.h&quot;
+
+void LEDBlink_ctor(void);
+extern QActive * const LEDblink_AO; /* opaque pointer */
+
+//void Buzzer_dictionary_add();
+
+#endif /* LEDBLINK_AO_H */
+</text>
+  </file>
+ </directory>
+</model>

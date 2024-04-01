@@ -18,6 +18,8 @@
 #include <stdlib.h>
 #include <stdint.h>
 
+#define ENCODER_RANGE 65535
+
 typedef bool (*getBntStateCb_t)();
 typedef uint32_t (*getTimerCntCb_t)();
 
@@ -66,4 +68,3 @@ bool libencoder_isBtnHeldDown(libencoder_encoder_t *encoder);
 
 
 #endif /* _LIBENCODER_H */
-

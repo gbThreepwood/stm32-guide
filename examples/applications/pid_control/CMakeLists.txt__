@@ -1,0 +1,38 @@
+# use a recent CMake version
+cmake_minimum_required(VERSION 3.23 FATAL_ERROR)
+cmake_policy(VERSION 3.23...3.28)
+cmake_policy(SET CMP0083 NEW)
+cmake_policy(SET CMP0105 NEW)
+cmake_policy(SET CMP0116 NEW)
+cmake_policy(SET CMP0128 NEW)
+
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR})
+
+# include general project config & import qpc
+set(QPC_SDK_PATH ${CMAKE_SOURCE_DIR}/lib/qp/qpc)
+# set(QPC_FETCH_FROM_GIT ON)
+# set(QPC_FETCH_FROM_GIT_PATH ${CMAKE_SOURCE_DIR}/Source/qpc-sdk)
+include(qpc_sdk_import)
+
+# default image/project name is trafficlight
+# Give a special name via -DIMAGE=<image>
+# the main project
+project(myProject
+    VERSION "1.0.0"
+    DESCRIPTION "my 1st qpc project"
+    LANGUAGES C CXX
+)
+
+# the project target(s)
+add_executable(qpcApp pid_control.c)
+
+include(${QPC_SDK_PATH}/qpc_sdk_init.cmake)
+set(QPC_PROJECT qpcPrj)
+set(QPC_CFG_KERNEL QV)
+set(QPC_CFG_GUI FALSE)
+set(QPC_CFG_UNIT_TEST FALSE)
+set(QPC_CFG_PORT arm-cm)
+set(QPC_CFG_VERBOSE TRUE)
+qpc_sdk_init()
+
+target_link_libraries(qpcApp PRIVATE qpc)

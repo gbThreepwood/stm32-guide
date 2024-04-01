@@ -31,21 +31,32 @@ void libencoder_poll(libencoder_encoder_t *encoder){
     if(encoder->currentCnt != encoder->prevCnt){ // Detect a change in count value
 
         /*
-         * TODO:
-         * The timer is 16-bit and hence counts from 0 to 65535.
+         * The timer is (assumed to be) 16-bit and hence counts from 0 to 65535.
          * Rotating left increase the count while rotating right decrease the count.
          * The timer starts at zero, and hence rotating right will roll over to 65535.
          * This edge case must be handled to avoid glitching.
          * Setting the timer to some value in the middle is not a solution, since the
          * user eventually might reach rollover anyway.
          */
-        if(encoder->currentCnt > encoder->prevCnt){ // Determine which way the count has changed
-        //if(((int32_t)encoder->prevCnt - (int32_t)encoder->currentCnt) < 0){ // Determine which way the count has changed
+        int32_t enc_delta = encoder->currentCnt - encoder->prevCnt;
+
+        // If the encoder count difference is larger than half the range we assume it had an overflow.
+
+        if(enc_delta > (ENCODER_RANGE / 2)){ // curr: 65535, prev: 0 => delta = 65535. Rotated right
+            //enc_delta = -1; // Works as long as we do not get multiple encoder counts between each poll
+            enc_delta = -(ENCODER_RANGE - enc_delta);
+        }
+        else if(enc_delta < -(ENCODER_RANGE / 2) ){ // curr: 0, prev: 65535 => delta = -65535. Rotated left
+            //enc_delta = 1;
+            enc_delta = (ENCODER_RANGE + enc_delta + 1);
+        }
+
+        if(enc_delta > 0){ // Encoder rotated left
 
             encoder->isTurnedLeft = true;
             encoder->isTurnedRight = false;
         }
-        else{
+        else{ // Encoder rotated right
 
             encoder->isTurnedLeft = false;
             encoder->isTurnedRight = true;

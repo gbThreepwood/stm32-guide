@@ -42,6 +42,8 @@
 
 #include <stm32l4xx_ll_tim.h>
 
+#include "qpc.h"
+
 #include "bsp/bsp_adc.h"
 #include "bsp/bsp_dma.h"
 #include "bsp/bsp_gpio.h"
@@ -49,27 +51,11 @@
 #include "bsp/bsp_uart.h"
 
 #include "lib/encoder/libencoder.h"
+#include "lib/hd44780/libhd44780.h"
+
+#include "ledblink.h"
 
 volatile uint32_t counter = 0;
-
-
-void SysTick_Handler(void)
-{
-    static uint_fast32_t counter = 0;
-    counter++;
-
-    if(LL_GPIO_IsInputPinSet(GPIOA, LL_GPIO_PIN_9)){
-        // 1 Hz blinking
-        if ((counter % 1500) == 0)
-            LL_GPIO_TogglePin(ONBOARD_LED_PORT, ONBOARD_LED_PIN);
-            //LL_GPIO_TogglePin(BLUE_LED_PORT, BLUE_LED_PIN);
-    }
-    else{
-       if ((counter % 500) == 0)
-            LL_GPIO_TogglePin(ONBOARD_LED_PORT, ONBOARD_LED_PIN);
-
-    }
-}
 
 
 bool get_encoder_button_state(){
@@ -109,6 +95,32 @@ int main(void) {
     print_uint32(SystemCoreClock);
     print_str("\r\n");
 
+    libHD44780_ctx_t lcd_ctx = {0};
+    libHD44780_Init(&lcd_ctx, &bsp_lcd_set_gpio_pins, &bsp_lcd_set_en_pin, 16, 2);
+
+    libHD44780_Clear(&lcd_ctx);
+    libHD44780_Puts(&lcd_ctx, 0, 0, "Hestfest");
+
+    //bsp_green_led_on();
+
+    static QEvt const *l_LEDblinkQSto[10];
+
+    //QF_init();  /* initialize the framework and the underlying RT kernel */
+
+    //LEDblink_ctor();
+    ////Buzzer_dictionary_add();
+    //QACTIVE_START(LEDblink_AO,            /* AO pointer to start */
+    //            1U,                   /* unique QP priority of the AO */
+    //            l_LEDblinkQSto,        /* storage for the AO's queue */
+    //            Q_DIM(l_LEDblinkQSto), /* lenght of the queue [entries] */
+    //            (void *)0,            /* stack storage (not used in QK) */
+    //            0U,                   /* stack size [bytes] (not used in QK) */
+    //            (QEvt *)0);           /* initial event (or 0) */
+
+    //static BuzzerPlayRequestEvt smlPoolSto[10];
+    //QF_poolInit(smlPoolSto, sizeof(smlPoolSto), sizeof(smlPoolSto[0]));
+
+    //return QF_run(); /* run the QF application */
 
     while(1) {
 
