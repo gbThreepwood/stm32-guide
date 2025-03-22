@@ -54,11 +54,11 @@ int main(){
         // Set pin 7
         GPIOB->BSRR |= GPIO_BSRR_BS7;
 
-        delay_ms(500);
+        delay_ms(100);
 
         // Reset pin 7
         GPIOB->BSRR |= GPIO_BSRR_BR7;
 
-        delay_ms(500);
+        delay_ms(100);
     }
 }
