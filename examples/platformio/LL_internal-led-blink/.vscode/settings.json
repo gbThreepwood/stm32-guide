@@ -1,0 +1,5 @@
+{
+    "files.associations": {
+        "stm32f7xx_ll_utils.h": "c"
+    }
+}
