@@ -1,0 +1,34 @@
+\section{Ethernet}
+
+\begin{frame}{Introduksjon til Ethernet og UDP,TCP/IP for STM32}
+	
+	STM32F767 har støtte for kabla ethernet. Det er fleire ulike bibliotek tilgjengelig for nettverksapplikasjonar:
+	
+	\begin{itemize}
+		\item lwIP (\url{https://savannah.nongnu.org/projects/lwip/})
+		\item Mongoose (\url{https://github.com/cesanta/mongoose})
+	\end{itemize}
+	
+	Biblioteka kan nyttast ``stand alone'' eller saman med eit sanntidsoperativsystem som til dømes FreeRTOS (\url{https://www.freertos.org/}).
+	
+	Ein kan setta opp mikrokontrolleren for enkel demonstrasjon av TCP og UDP, den kan fungera som ein sensor som leverer data på MQTT, ein kan setta opp ein fullverdig HTTP(S) webserver, og ein heil haug av andre applikasjonar.
+	
+\end{frame}
+
+
+\begin{frame}{lwIP}
+	
+	STM32CubeMX har støtte for å oppretta og konfigurera eit lwIP-basert ethernetprosjekt. 
+	
+\end{frame}
+
+\begin{frame}[containsverbatim]{lwIP}
+	
+	
+	
+	\begin{minted}[fontsize=\footnotesize]{c}
+		int main(void)
+	\end{minted}
+	
+\end{frame}
+

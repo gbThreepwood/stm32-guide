@@ -1,0 +1,61 @@
+\section{Bruk av CMSIS}
+
+\begin{frame}{Introduksjon til CMSIS}
+	
+	CMSIS (Common Microcontroller Software Interface Standard) er eit leverandøruavhengig abstraksjonslag for Cortex-M baserte mikrokontrollerar.
+	
+\end{frame}
+
+
+
+
+\begin{frame}[containsverbatim]{CMSIS}
+		
+%\inputminted[]{c}{../examples//platformio/CMSIS_internal-led-blink/src/main.c}
+
+\begin{minted}[fontsize=\footnotesize]{c}
+void gpio_pin_config(){
+RCC->AHB1ENR |= RCC_AHB1ENR_GPIOBEN;
+	
+// 0b00 = input. 0b01 = output. 0b10 = alternate. 0b11 = analog.
+GPIOB->MODER |= GPIO_MODER_MODER7_0;
+	
+// 0 = push-pull. 1 = open-drain.
+GPIOB->OTYPER &= ~(GPIO_OTYPER_OT7);
+	
+// 0b00 = low. 0b01 = medium. 0b10 = high. 0b11 = very high.
+GPIOB->OSPEEDR |= (GPIO_OSPEEDER_OSPEEDR7_0 | GPIO_OSPEEDER_OSPEEDR7_1);
+	
+// 0b00 = no. 0b01 = pull-up. 0b10 = pull-down. 0b11 = reserved.
+GPIOB->PUPDR &= ~(GPIO_PUPDR_PUPDR7_0 | GPIO_PUPDR_PUPDR7_1);
+	
+}
+\end{minted}
+	
+\end{frame}
+
+\begin{frame}[containsverbatim]{CMSIS}
+	
+\begin{minted}[fontsize=\footnotesize]{c}
+int main(){
+	
+	gpio_pin_config();
+	SysTick_Config(SystemCoreClock / 80);
+	
+	for(;;){ //ever
+		
+		// Set pin 7
+		GPIOB->BSRR |= GPIO_BSRR_BS7;
+		
+		delay_ms(100);
+		
+		// Reset pin 7
+		GPIOB->BSRR |= GPIO_BSRR_BR7;
+		
+		delay_ms(100);
+	}
+}
+\end{minted}
+	
+\end{frame}
+

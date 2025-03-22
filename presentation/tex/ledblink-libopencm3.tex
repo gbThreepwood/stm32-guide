@@ -1,0 +1,63 @@
+\section{Bruk av libopencm3}
+
+\begin{frame}{Introduksjon til libopencm3}
+	
+	libopencm3 er eit prosjekt for utvikling av eit ikkje-proprietært åpen kjeldekode bibliotek for ARM Cortex mikrokontrollerar.
+	
+	Det har mellom anna støtte for:
+	
+	\begin{itemize}
+		\item ST STM32
+		\item Ti Tiva og Stellaris
+		\item NXP LPC
+		\item Atmel SAM3
+		\item Energy Micro EFM32
+		\item og mange fleire
+	\end{itemize}
+	
+\end{frame}
+
+
+
+
+\begin{frame}[containsverbatim]{libopencm3}
+	
+	\begin{minted}[fontsize=\footnotesize]{c}
+#include <libopencm3/stm32/rcc.h>
+#include <libopencm3/stm32/gpio.h>
+
+static void gpio_setup(void)
+{
+	/* Enable GPIOB clock. */
+	rcc_periph_clock_enable(RCC_GPIOB);
+	
+	/* Set GPIO14 (in GPIO port B) to 'output push-pull'. */
+	gpio_mode_setup(GPIOB, GPIO_MODE_OUTPUT,
+		GPIO_PUPD_NONE, GPIO14);
+}
+	\end{minted}
+	
+\end{frame}
+
+\begin{frame}[containsverbatim]{libopencm3}
+	
+	\begin{minted}[fontsize=\footnotesize]{c}
+int main(void)
+{
+	uint32_t i;
+	
+	gpio_setup();
+	
+	while (1) {
+		/* Using API function gpio_toggle(): */
+		gpio_toggle(GPIOB, GPIO14);	/* LED on/off */
+		for (i = 0; i < 2000000; i++) /* Wait a bit. */
+		__asm__("nop");
+		
+	}
+	
+	return 0;
+}
+	\end{minted}
+	
+\end{frame}

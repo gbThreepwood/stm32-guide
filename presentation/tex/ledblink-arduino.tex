@@ -1,0 +1,73 @@
+\section{Bruk av Arduino}
+
+\begin{frame}{Introduksjon til Arduno}
+	
+	Med Arduino i denne konteksten meiner eg \textit{biblioteket} \mintinline{c}{<Arduino.h>}.
+	
+	Eit problem med Arduino er at det har ein veldig forenkla API, som ikkje gir brukaren full kontroll på (eller forståelse for) eigenskapane til dei HW modulane ein nyttar. Til dømes har alle dei digitale utgangane på ein STM32 mikrokontroller ei innstilling for hastighet og push-pull vs open-drain, men \mintinline{c}{pinMode(USER_LED_1, OUTPUT);} har ikkje mulighet for å endra på dei innstillingane.
+	
+\end{frame}
+
+\begin{frame}[containsverbatim]{Arduino}
+	
+	\begin{minted}[fontsize=\footnotesize]{c}
+#include <Arduino.h>
+
+#define USER_LED_1 LED_BUILTIN
+#define USER_LED_2 7
+#define USER_LED_3 14
+
+void setup() {
+	pinMode(USER_LED_1, OUTPUT);
+}
+
+void loop() {
+	digitalWrite(USER_LED_1, HIGH);
+	delay(100);
+	digitalWrite(USER_LED_1, LOW);
+	delay(100);
+}
+	\end{minted}
+	
+\end{frame}
+
+
+\begin{frame}[containsverbatim]{Arduino og LL}
+	
+Arduino nyttar LL biblioteket internt (når du er på ein STM32), og det er derfor enkelt å kombinera kode frå begge rammeverk:
+	
+	\begin{minted}[fontsize=\footnotesize]{c}
+#include <Arduino.h>
+
+#include <stm32f7xx_ll_gpio.h>
+#include <stm32f7xx_ll_bus.h>
+
+#define USER_LED_PORT           GPIOB
+#define USER_LED1_PIN           LL_GPIO_PIN_0
+
+void setup() {
+	
+LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOB);
+	
+LL_GPIO_SetPinMode(USER_LED_PORT, USER_LED1_PIN,
+	LL_GPIO_MODE_OUTPUT);
+LL_GPIO_SetPinOutputType(USER_LED_PORT, USER_LED1_PIN,
+	LL_GPIO_OUTPUT_PUSHPULL);
+}
+	\end{minted}
+	
+\end{frame}
+
+\begin{frame}[containsverbatim]{Arduino og LL}
+	
+	\begin{minted}[fontsize=\footnotesize]{c}
+void loop() {
+	
+	LL_GPIO_TogglePin(USER_LED_PORT, USER_LED1_PIN);
+	delay(100);
+}
+	\end{minted}
+	
+	For å kunna utnytta all funksjonalitet i mikrokontrolleren er ein avhengig av eit kraftigare bibliotek enn Arduino, og dette kan i slike situasjonar vera ei god nødløysing.
+	
+\end{frame}

@@ -1,0 +1,135 @@
+\documentclass[10pt,a4paper]{beamer}
+%\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[nynorsk]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+
+\usepackage[
+backend=biber,
+style=ieee,
+sorting=ynt
+]{biblatex}
+
+\addbibresource{bib/latex-kurs-referansar.bib}
+
+\usepackage{svg}
+
+\usepackage{subfiles}
+
+\usepackage{multicol}
+
+\usetheme{metropolis}
+
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{subsection in toc}[subsections numbered]
+
+\usepackage[pagewise]{lineno}
+\usepackage{csquotes}
+
+\usepackage{minted}
+\usepackage{listings}
+
+\usepackage{multirow}
+
+\usepackage{siunitx}
+\usepackage{steinmetz}
+
+\usepackage{xcolor}
+
+\usepackage{enumerate}
+
+\usepackage{lipsum}
+
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage{pgfplots}
+
+
+\title{Grunnleggande innføring i STM32}
+\date{\today}
+\author{Eirik Haustveit}
+\institute{Institutt for datateknologi, elektroteknologi og realfag}
+\begin{document}
+	
+	\titlepage
+
+	\section{Plan for kurset}
+
+	\begin{frame}{Plan}
+		
+        \begin{itemize}
+           \item Oppbygging til mikrokontrolleren og Nucleo-kortet
+           \item Kretsskjema
+           \item Klokketreet
+           \item VSCode og PlatformIO
+           \item Bruk av ``Low layer''-biblioteket
+           \item Bruk av CMSIS
+           \item Bruk av libopencm3
+           \item Bruk av Arduino-biblioteket
+           \item Bruk av HAL-biblioteket og CubeMX (v. Gizem)
+           \item U(S)ART
+           \item USB
+           \item Nettverkskommunikasjon
+		\end{itemize}
+		
+	\end{frame}
+
+
+	
+	\subfile{tex/introduction.tex}
+	
+	\subfile{tex/ledblink-stm32cube-ll.tex}
+	
+	\subfile{tex/ledblink-CMSIS.tex}
+
+	\subfile{tex/ledblink-libopencm3}
+	
+	\subfile{tex/ledblink-arduino.tex}
+	
+	\subfile{tex/stm32cubemx.tex}
+	
+	\subfile{tex/stm32-uart.tex}
+	
+	\subfile{tex/stm32-usb-device.tex}
+
+	\subfile{tex/stm32-ethernet.tex}
+
+%	\subfile{tex/ledblink.tex}
+%	\subfile{tex/push-button.tex}
+%
+%	\subfile{tex/debugging.tex}
+%
+%	\subfile{tex/serial-port.tex}
+%
+%	\subfile{tex/adc.tex}
+%
+%	\subfile{tex/timer-and-pwm.tex}
+%
+%	\subfile{tex/dma.tex}
+%
+%	\subfile{tex/dac.tex}
+%
+%	\subfile{tex/i2c.tex}
+%
+%	\subfile{tex/ethernet.tex}
+%
+%
+%	\subfile{tex/usb-device.tex}
+%	\subfile{tex/usb-host.tex}
+
+	\begin{frame}{Referansar}	
+	
+	\printbibliography 
+	
+	\end{frame}
+	
+	
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

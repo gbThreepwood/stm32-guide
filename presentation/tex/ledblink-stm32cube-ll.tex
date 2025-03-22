@@ -1,0 +1,63 @@
+\section{Bruk av STM32Cube LL}
+
+\begin{frame}{Introduksjon til low-level biblioteket}
+	
+	STM32Cube tilbyr to ulike biblitotek for å snakka med dei ulike HW modulane i mikrokontrolleren.
+	
+	\begin{itemize}
+		\item Low Layer (LL)
+		\item Hardware Abstraction Layer (HAL)
+	\end{itemize}
+	
+	LL-biblioteket tilbyr eit mindre abstrakt lavnivå API for direkte kommunikasjon med HW.
+	
+	HAL og LL er heilt uavhengige. Både HAL og LL snakkar direkte med lavnivå I/O-register ved hjelp av peikarar til dei ulike minneadressene.
+	
+\end{frame}
+
+
+
+
+\begin{frame}[containsverbatim]{STM32Cube LL}
+	
+\begin{minted}[fontsize=\footnotesize]{c}
+#include <stm32f7xx_ll_gpio.h>
+#include <stm32f7xx_ll_bus.h>
+#include <stm32f7xx_ll_utils.h>
+
+#define USER_LED_PORT           GPIOB
+#define USER_LED1_PIN           LL_GPIO_PIN_0
+#define USER_LED2_PIN           LL_GPIO_PIN_7
+#define USER_LED3_PIN           LL_GPIO_PIN_14
+
+void init_gpio(void) {
+	
+LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOB);
+	
+LL_GPIO_SetPinMode(USER_LED_PORT, USER_LED1_PIN,
+	LL_GPIO_MODE_OUTPUT);
+LL_GPIO_SetPinOutputType(USER_LED_PORT, USER_LED1_PIN,
+	LL_GPIO_OUTPUT_PUSHPULL);
+}
+	\end{minted}
+	
+\end{frame}
+
+\begin{frame}[containsverbatim]{STM32Cube LL}
+	
+\begin{minted}[fontsize=\footnotesize]{c}
+int main(void) {
+	init_gpio();
+	
+	SystemCoreClockUpdate();
+	SysTick_Config(SystemCoreClock / 1000);
+	
+	while(1){
+		
+		LL_GPIO_TogglePin(USER_LED_PORT, USER_LED1_PIN);
+		LL_mDelay(500);
+	}
+}
+\end{minted}
+	
+\end{frame}

@@ -1,0 +1,49 @@
+\section{USB}
+
+\begin{frame}{Introduksjon til USB for STM32}
+	
+	STM32F767 (og mange av dei andre mikrokontrollerane i STM32 serien) har innebygd støtte for USB. Det betyr at mikrokontrolleren kan levera mykje meir enn ein serieport via USB.
+	
+	\begin{itemize}
+		\item Fleire serieportar via samme USB kabel
+		\item Mus eller tastatur (eller begge delar)
+		\item Lydkort
+		\item USB-minne (minnepinne)
+		\item ..og veldig mykje meir
+	\end{itemize}
+	
+	\textit{TinyUSB} (\url{https://github.com/hathach/tinyusb}) er eit veldig bra bibliotek for USB på STM32.
+	
+\end{frame}
+
+
+
+
+\begin{frame}[containsverbatim]{USB}
+	
+	\begin{minted}[fontsize=\footnotesize]{c}
+int main(void) {
+	board_init();
+	
+	// init device stack on configured roothub port
+	tusb_rhport_init_t dev_init = {
+		.role = TUSB_ROLE_DEVICE,
+		.speed = TUSB_SPEED_AUTO
+	};
+	tusb_init(BOARD_TUD_RHPORT, &dev_init);
+	
+	if (board_init_after_tusb) {
+		board_init_after_tusb();
+	}
+	
+	while (1) {
+		tud_task(); // tinyusb device task
+		led_blinking_task();
+		
+		cdc_task();
+	}
+}
+	\end{minted}
+	
+\end{frame}
+
